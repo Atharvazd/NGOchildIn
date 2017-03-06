@@ -1,0 +1,14 @@
+{
+  "generator-kraken": {
+    "taskModule": "grunt",
+    "lintModule": "eslint",
+    "description": "A project of NGO childIn",
+    "author": "Team Beyonddonation",
+    "templateModule": "dustjs",
+    "i18n": false,
+    "componentPackager": false,
+    "cssModule": false,
+    "jsModule": "requirejs",
+    "useJson": null
+  }
+}
