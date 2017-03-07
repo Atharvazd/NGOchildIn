@@ -6,8 +6,131 @@
       <div class="row">
         {>"layouts/sidebar" /}
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">{name} Dashboard </h1>
-          {+body /}
+          {@eq key=data.url value="dashboard"}
+            <h1 class="page-header">Dashboard </h1>
+          {/eq}
+          {@eq key=data.url value="donors"}
+          <div class="row">
+            <div class="col-md-10">
+              <h3 class="page-header">Donors</h3>
+            </div>
+            <div class="col-md-2">
+              <button type="button" class="btn btn-info btn-md" id="myBtn">Register Donor</button>
+            </div>
+          </div>
+
+          <!-- Modal content-->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content col-md-12">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">×</button>
+                  <h4 class="modal-title">Register Donor</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <form class="form-horizontal">
+                      <fieldset>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="name">Name</label>
+                          <div class="col-md-8">
+                            <input id="name" name="name" type="text" placeholder="Enter your name" class="form-control input-md" required="" >
+
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="email">Email</label>
+                          <div class="col-md-8">
+                            <input id="email" name="email" type="text" placeholder="Enter your email id" class="form-control input-md" >
+
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="contact">Contact no.</label>
+                          <div class="col-md-8">
+                            <input id="contact" name="contact" type="text" placeholder="Enter your contact no." class="form-control input-md" required="">
+
+                          </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="blood_group">Occasion</label>
+                          <div class="col-md-8">
+                            <select id="ocassion" name="ocassion" class="form-control">
+                              <option value="-1">Select</option>
+                              <option value="1">Birthday</option>
+                              <option value="2">Wedding anniversary</option>
+                              <option value="3">Memorial day</option>
+                              <option value="4">Others</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="occasion_date">Occasion Date</label>
+                          <div class="col-md-8">
+                            <input id="occasion_date" name="occasion_date" type="text" placeholder="Enter date" class="form-control input-md" >
+
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="address">Address</label>
+                          <div class="col-md-8">
+                            <input id="address" name="address" type="text" placeholder="Enter your address" class="form-control input-md" >
+
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="details">Details</label>
+                          <div class="col-md-8">
+                            <textarea id="details" name="details" placeholder="Enter detailed info" class="form-control input-md" >
+                            </textarea>
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="supported_child">Supported child</label>
+                          <div class="col-md-8">
+                            <input id="supported_child" name="supported_child" type="text" placeholder="Child you support" class="form-control input-md" >
+
+                          </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="register"></label>
+                          <div class="col-md-8">
+                            <button id="register" name="register" class="btn btn-success">Register</button>
+                          </div>
+                        </div>
+
+                      </fieldset>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/eq}
+          {@eq key=data.url value="messages"}
+            <h1 class="page-header">Send messages</h1>
+          {/eq}
         </div>
       </div>
     </div>

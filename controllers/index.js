@@ -10,6 +10,15 @@ module.exports = function (router) {
     router.get('/', function (req, res) {
         res.render('index', model);
     });
+
+    router.get('/donors', function (req, res) {
+        res.render('index', {data : {url : 'donors'}});
+    });
+
+    router.get('/messages', function (req, res) {
+        res.render('index', {data : {url : 'messages'}});
+    });
+
     router.get('/login', function (req, res) {
         res.render('login');
     });

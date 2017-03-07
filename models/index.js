@@ -2,6 +2,8 @@
 
 module.exports = function IndexModel() {
     return {
-        name: 'childIn'
+        data : {
+          url : 'dashboard'
+        }
     };
 };
