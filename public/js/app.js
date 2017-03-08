@@ -126,7 +126,7 @@
             donorId = element.innerHTML;
           }
         });
-        console.log(donorId);
+        console.log('donorId : '+ donorId);
 
         donorId && $("#deleteDonor").attr("data-donor-id", donorId);
     });

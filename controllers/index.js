@@ -90,7 +90,50 @@ module.exports = function (router) {
           occasion_date: 'xxxx',
           additional_info: 'xxxx',
           supported_child: 'xxxx'
+        }
+      ]
+    });
+  });
+
+  router.get('/child', function (req, res) {
+    res.render('index', {
+      url: 'child',
+      child: [
+        {
+          child_id: 116,
+          name: 'xxxx',
+          dob: 'xxxx',
+          additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
+          supporter_donor: 'xxxx'
         },
+        {
+          child_id: 117,
+          name: 'xxxx',
+          dob: 'xxxx',
+          additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
+          supporter_donor: 'xxxx'
+        },
+        {
+          child_id: 118,
+          name: 'xxxx',
+          dob: 'xxxx',
+          additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
+          supporter_donor: 'xxxx'
+        },
+        {
+          child_id: 119,
+          name: 'xxxx',
+          dob: 'xxxx',
+          additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
+          supporter_donor: 'xxxx'
+        },
+        {
+          child_id: 110,
+          name: 'xxxx',
+          dob: 'xxxx',
+          additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
+          supporter_donor: 'xxxx'
+        }
       ]
     });
   });

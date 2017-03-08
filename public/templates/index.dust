@@ -233,8 +233,8 @@
             </div>
           </div>
           {/eq}
-          {@eq key=url value="messages"}
-            <h1 class="page-header">Send messages</h1>
+          {@eq key=url value="child"}
+            <h1 class="page-header">Dashboard </h1>
           {/eq}
         </div>
       </div>
