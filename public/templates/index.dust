@@ -11,20 +11,26 @@
           {/eq}
           {@eq key=url value="donors"}
           <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-8">
               <h3 class="page-header">Donors</h3>
             </div>
             <div class="col-md-2">
               <button type="button" class="btn btn-info btn-md" id="registerDonor">Register New Donor</button>
             </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#ModalMessage">
+                <span class="glyphicon glyphicon-envelope"></span> Message
+              </button>
+            </div>
           </div>
 
           <div class="row">
             <div class="table-responsive">
-              <table class="table table-hover">
+              <table id="donorsList" class="table table-hover">
                 <thead>
                   <tr>
-                    <th>Id</th>
+                    <th><input type="checkbox" id="checkall" /></th>
+                    <th style="display:none;">Id</th>
                     <th>Name</th>
                     <th>Contact No.</th>
                     <th>Email</th>
@@ -39,27 +45,24 @@
                 <tbody id="donorList" class="donor-list">
                     {#donor}
                       <tr>
-                        <td id="donor_id">{donor_id}</td>
-                        <td id="name">{name}</td>
-                        <td id="contact">{contact}</td>
-                        <td id="email">{email}</td>
-                        <td id="occasion">{occasion}</td>
-                        <td id="occasion_date">{occasion_date}</td>
-                        <td id="additional_info">{additional_info}</td>
-                        <td id="supported_child">{supported_child}</td>
-                        <td>
-                          <p data-placement="top" data-toggle="tooltip" title="Edit">
-                            <button class="btn btn-primary btn-xs editButton">
-                              <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                          </p>
+                        <td class="donorCheckbox"><input type="checkbox" class="checkthis" /></td>
+                        <td class="donor_id" style="display:none;">{donor_id}</td>
+                        <td class="name">{name}</td>
+                        <td class="contact">{contact}</td>
+                        <td class="email">{email}</td>
+                        <td class="occasion">{occasion}</td>
+                        <td class="occasion_date">{occasion_date}</td>
+                        <td class="additional_info">{additional_info}</td>
+                        <td class="supported_child">{supported_child}</td>
+                        <td class="editButton">
+                          <button class="btn btn-primary btn-xs">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                          </button>
                         </td>
-                        <td>
-                          <p data-placement="top" data-toggle="tooltip" title="Delete">
-                            <button class="btn btn-danger btn-xs deleteButton">
-                              <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                          </p>
+                        <td class="deleteButton">
+                          <button class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-trash"></span>
+                          </button>
                         </td>
                       </tr>
                     {/donor}
@@ -72,6 +75,40 @@
           </div>
 
           <!-- Modal content-->
+
+          <!-- Message Modal -->
+          <div class="modal fade" id="ModalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <form id="FormMessage" class="form-horizontal">
+                <div class="modal-content">
+                  <div class="modal-header btn-primary">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="text-center"  id="myModalLabel">Message</h4>
+                  </div>
+                  <div class="modal-body">
+                    <br />
+                    <!-- input Subject -->
+                    <div class="control-group">
+                      <label for="subject">Subject</label>
+                      <input name="subject" type="text" class="form-control">
+                    </div>
+                    <br />
+                    <!-- TextArea Message -->
+                    <div class="control-group">
+                      <label for="messages">Message</label>
+                      <textarea id="messages" name="messages" class="form-control" rows="5"></textarea>
+                    </div>
+                    <br />
+                  </div>
+                  <div class="modal-footer">
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-send"></span>Send</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
 
           <!-- Delete-->
           <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -87,7 +124,7 @@
 
                 </div>
                 <div class="modal-footer ">
-                  <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                  <button type="button" class="btn btn-success" id="deleteDonor" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                 </div>
               </div>

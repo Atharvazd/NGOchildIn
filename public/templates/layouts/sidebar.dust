@@ -2,7 +2,7 @@
   <ul class="nav nav-sidebar">
     <li><a href="/">Home</a></li>
     <li><a href="/donors">Donors</a></li>
-    <li><a href="/messages">Send Messages/Emails</a></li>
+    <li><a href="/child">Child</a></li>
     <li><a href="#">Export</a></li>
   </ul>
 </div>

@@ -36,6 +36,7 @@ module.exports = function (router) {
           supported_child: 'xxxx'
         },
         {
+          donor_id: 112,
           name: 'xxxx',
           contact: 'xxxx',
           email: 'xxxx',
@@ -45,6 +46,7 @@ module.exports = function (router) {
           supported_child: 'xxxx'
         },
         {
+          donor_id: 121,
           name: 'xxxx',
           contact: 'xxxx',
           email: 'xxxx',
@@ -93,8 +95,28 @@ module.exports = function (router) {
     });
   });
 
-  router.get('/messages', function (req, res) {
-    res.render('index', {url : 'messages'});
+  router.post('/messagesDonor', function (req, res) {
+    console.log('messagesDonor',req.body);
+    res.json({}).end()
+    //res.render('index', {url : 'messages'});
+  });
+
+  router.post('/registerDonor', function (req, res) {
+    console.log('registerDonor',req.body);
+    res.json({}).end()
+    //res.render('index', {url : 'messages'});
+  });
+
+  router.post('/updateDonor', function (req, res) {
+    console.log('updateDonor',req.body);
+    res.json({}).end()
+    //res.render('index', {url : 'messages'});
+  });
+
+  router.post('/deleteDonor', function (req, res) {
+    console.log('deleteDonor',req.body);
+    res.json({}).end()
+    //res.render('index', {url : 'messages'});
   });
 
   router.get('/login', function (req, res) {

@@ -1,138 +1,187 @@
-/*global requirejs:true*/
 'use strict';
 
-requirejs.config({
-    paths: {}
-});
+(function() {
+  $.fn.pageMe = function(opts){
+    var $this = this,
+    defaults = {
+      perPage: 7,
+      showPrevNext: false,
+      hidePageNumbers: false
+    },
+    settings = $.extend(defaults, opts);
 
+    var listElement = $this;
+    var perPage = settings.perPage;
+    var children = listElement.children();
+    var pager = $('.pager');
 
-require([/* Dependencies */], function () {
+    if (typeof settings.childSelector!="undefined") {
+      children = listElement.find(settings.childSelector);
+    }
 
-    var app = {
-        initialize: function () {
-          $.fn.pageMe = function(opts){
-            var $this = this,
-            defaults = {
-              perPage: 7,
-              showPrevNext: false,
-              hidePageNumbers: false
-            },
-            settings = $.extend(defaults, opts);
+    if (typeof settings.pagerSelector!="undefined") {
+      pager = $(settings.pagerSelector);
+    }
 
-            var listElement = $this;
-            var perPage = settings.perPage;
-            var children = listElement.children();
-            var pager = $('.pager');
+    var numItems = children.size();
+    var numPages = Math.ceil(numItems/perPage);
 
-            if (typeof settings.childSelector!="undefined") {
-              children = listElement.find(settings.childSelector);
-            }
+    pager.data("curr",0);
 
-            if (typeof settings.pagerSelector!="undefined") {
-              pager = $(settings.pagerSelector);
-            }
+    if (settings.showPrevNext){
+      $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+    }
 
-            var numItems = children.size();
-            var numPages = Math.ceil(numItems/perPage);
+    var curr = 0;
+    while(numPages > curr && (settings.hidePageNumbers==false)){
+      $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
+      curr++;
+    }
 
-            pager.data("curr",0);
+    if (settings.showPrevNext){
+      $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+    }
 
-            if (settings.showPrevNext){
-              $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
-            }
+    pager.find('.page_link:first').addClass('active');
+    pager.find('.prev_link').hide();
+    if (numPages<=1) {
+      pager.find('.next_link').hide();
+    }
+    pager.children().eq(1).addClass("active");
 
-            var curr = 0;
-            while(numPages > curr && (settings.hidePageNumbers==false)){
-              $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
-              curr++;
-            }
+    children.hide();
+    children.slice(0, perPage).show();
 
-            if (settings.showPrevNext){
-              $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
-            }
+    pager.find('li .page_link').click(function(){
+      var clickedPage = $(this).html().valueOf()-1;
+      goTo(clickedPage,perPage);
+      return false;
+    });
+    pager.find('li .prev_link').click(function(){
+      previous();
+      return false;
+    });
+    pager.find('li .next_link').click(function(){
+      next();
+      return false;
+    });
 
-            pager.find('.page_link:first').addClass('active');
-            pager.find('.prev_link').hide();
-            if (numPages<=1) {
-              pager.find('.next_link').hide();
-            }
-            pager.children().eq(1).addClass("active");
+    function previous(){
+      var goToPage = parseInt(pager.data("curr")) - 1;
+      goToPage && goTo(goToPage);
+    }
 
-            children.hide();
-            children.slice(0, perPage).show();
+    function next(){
+      var goToPage = parseInt(pager.data("curr")) + 1;
+      goToPage && goTo(goToPage);
+    }
 
-            pager.find('li .page_link').click(function(){
-              var clickedPage = $(this).html().valueOf()-1;
-              goTo(clickedPage,perPage);
-              return false;
-            });
-            pager.find('li .prev_link').click(function(){
-              previous();
-              return false;
-            });
-            pager.find('li .next_link').click(function(){
-              next();
-              return false;
-            });
+    function goTo(page){
+      var startAt = page * perPage,
+      endOn = startAt + perPage;
 
-            function previous(){
-              var goToPage = parseInt(pager.data("curr")) - 1;
-              goToPage && goTo(goToPage);
-            }
+      children.css('display','none').slice(startAt, endOn).show();
 
-            function next(){
-              var goToPage = parseInt(pager.data("curr")) + 1;
-              goToPage && goTo(goToPage);
-            }
+      if (page>=1) {
+        pager.find('.prev_link').show();
+      }
+      else {
+        pager.find('.prev_link').hide();
+      }
 
-            function goTo(page){
-              var startAt = page * perPage,
-              endOn = startAt + perPage;
+      if (page<(numPages-1)) {
+        pager.find('.next_link').show();
+      }
+      else {
+        pager.find('.next_link').hide();
+      }
 
-              children.css('display','none').slice(startAt, endOn).show();
+      pager.data("curr",page);
+      pager.children().removeClass("active");
+      pager.children().eq(page+1).addClass("active");
 
-              if (page>=1) {
-                pager.find('.prev_link').show();
-              }
-              else {
-                pager.find('.prev_link').hide();
-              }
+    }
+  };
 
-              if (page<(numPages-1)) {
-                pager.find('.next_link').show();
-              }
-              else {
-                pager.find('.next_link').hide();
-              }
+  $(document).ready(function(){
+    $("#registerDonor").click(function(){
+      $("#registerDonorForm").modal();
+    });
 
-              pager.data("curr",page);
-              pager.children().removeClass("active");
-              pager.children().eq(page+1).addClass("active");
+    $(".editButton").click(function(event) {
+        $("#registerDonorForm").modal();
+        var donorInfo = event.target.parentElement.parentElement.childNodes;
+        donorInfo.forEach(function(element, index) {
+          element.className && $('#form_' + element.className) && $('#form_' + element.className).val(element.innerHTML);
+        });
+    });
 
-            }
-          };
+    $(".deleteButton").click(function(event) {
+        $("#delete").modal();
 
-          $(document).ready(function(){
-            $("#registerDonor").click(function(){
-              $("#registerDonorForm").modal();
-            });
-            $(".editButton").click(function(event) {
-                var donorInfo = event.target.parentElement.parentElement.parentElement.parentElement.childNodes;
-                $("#registerDonorForm").modal();
-                donorInfo.forEach(function(element, index) {
-                  element.id && $('#form_' + element.id) && $('#form_' + element.id).val(element.innerHTML);
-                });
-            });
-            $(".deleteButton").click(function(event) {
-                $("#delete").modal();
-            });
-            $('#donorList').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:3});
+        var donorId;
+        var findDonorId = event.target.parentElement.parentElement.childNodes;
+        findDonorId.forEach(function(element){
+          if(element.className && element.className === 'donor_id' && element.innerHTML) {
+            donorId = element.innerHTML;
+          }
+        });
+        console.log(donorId);
 
-          });
+        donorId && $("#deleteDonor").attr("data-donor-id", donorId);
+    });
 
+    $('#donorList').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:3});
+
+    $("#donorsList #checkall").click(function () {
+      if ($("#donorsList #checkall").is(':checked')) {
+        $("#donorsList input[type=checkbox]").each(function () {
+          $(this).prop("checked", true);
+        });
+
+      } else {
+        $("#donorsList input[type=checkbox]").each(function () {
+          $(this).prop("checked", false);
+        });
+      }
+    });
+
+    $("#deleteDonor").click(function(event) {
+      var donorId = event.target.getAttribute("data-donor-id");
+      $.ajax({
+        url: '/deleteDonor',
+        data: {donor_id : donorId},
+        type: "POST",
+        dataType: "json",
+        success: function(json) {
         }
-    };
+      });
+    });
 
-    app.initialize();
+    $('form#FormMessage').on('submit', function(e){
+      var donorsListCheckbox = document.querySelectorAll('.checkthis');
+      var donorIds = [];
+      donorsListCheckbox.forEach(function(element){
+        if(element.checked) {
+          var findDonorId = element.parentElement.parentElement.childNodes;
+          findDonorId.forEach(function(element){
+            if(element.className && element.className === 'donor_id' && element.innerHTML) {
+              donorIds.push(element.innerHTML);
+            }
+          });
+        }
+      });
 
-});
+      var data_ajax = $(this).serialize()+"&donor_id=" + (donorIds.length > 0 ? JSON.stringify(donorIds) : '');
+      $.ajax({
+        url: '/messagesDonor',
+        data: data_ajax,
+        type: "POST",
+        dataType: "json",
+        success: function(json) {
+        }
+      });
+    });
+  });
+
+})(this);
