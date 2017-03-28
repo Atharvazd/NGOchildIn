@@ -2,13 +2,13 @@
 const DBConnector = require('../../lib/dbconnector');
 const helper = require('../../lib/helper');
 
-const CHILD_TABLE_NAME = 'Donor';
+const CHILD_TABLE_NAME = 'Child';
 const CHILD_FIELDS = {
-    ID: 'id',
+    ID: 'child_id',
     NAME: 'name',
-    GENDER: 'gender',
     DOB: 'date_of_birth',
-    DESCRIPTION: 'description', //hashed
+    ADDITIONAL_INFO: 'additional_info',
+    SUPPORTED_DONOR: 'supported_donor',
     TIME_CREATED: 'time_created'
 };
 
@@ -27,10 +27,10 @@ module.exports = {
         DBConnector.query("DELETE FROM " + CHILD_TABLE_NAME + " WHERE " + CHILD_FIELDS.ID + " = " + child_id, callback);
     },
 
-    insertChild: function(name, gender, dob, description, callback){
+    insertChild: function(name, dob, additional_info, supported_donor){
         const time_created = helper.getCurrentMySQLDate();
-        DBConnector.query("INSERT INTO " + CHILD_TABLE_NAME + " (" + CHILD_FIELDS.NAME + ", " + CHILD_FIELDS.GENDER + ", "
-         + CHILD_FIELDS.DOB + ", " + CHILD_FIELDS.DESCRIPTION + ", " + CHILD_FIELDS.TIME_CREATED + ") VALUES ('"
+        DBConnector.query("INSERT INTO " + CHILD_TABLE_NAME + " (" + CHILD_FIELDS.NAME + ", " + CHILD_FIELDS.DOB + ", "
+         + CHILD_FIELDS.ADDITIONAL_INFO + ", " + CHILD_FIELDS.SUPPORTED_DONOR + ", " + CHILD_FIELDS.TIME_CREATED + ") VALUES ('"
          + name + "', '" + gender + "', '" + dob + "', '" + description + "', '" + time_created + "')", callback);
     },
 
