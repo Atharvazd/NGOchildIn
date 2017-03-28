@@ -3,14 +3,7 @@ const DBConnector = require('../../lib/dbconnector');
 const helper = require('../../lib/helper');
 
 const DONOR_TABLE_NAME = 'Donor';
-const DONOR_FIELDS = {
-    ID: 'id',
-    NAME: 'name',
-    EMAIL: 'email',
-    MOBILE: 'mobile',
-    PASSWORD: 'password', //hashed
-    TIME_CREATED: 'time_created'
-};
+var DONOR_FIELDS = require('../../config/constants/constants').DONOR_FIELDS;
 
 module.exports = {
     isValidLogin: function(email, password, callback) {

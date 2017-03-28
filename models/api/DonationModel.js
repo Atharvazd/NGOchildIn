@@ -4,24 +4,11 @@ const helper = require('../../lib/helper');
 const DonorModel = require('./DonorModel');
 
 const DONATION_TABLE_NAME = 'Donor';
+
+var DONATION_FIELDS = require('../../config/constants/constants').DONATION_FIELDS;
 /*
  * All Donor related fields also present for consistency with data provided from Bank
  */
-const DONATION_FIELDS = {
-    ID : 'id',
-    CHILD_ID : 'child_id',
-    PURPOSE : 'purpose',
-    DATE : 'date_of_donation',
-    DONOR_GENDER : 'donor_gender',
-    DONOR_DOB : 'donor_date_of_birth',
-    DONOR_ADDRESS : 'donor_address',
-    DONOR_PROFESSION : 'donor_profession',
-    DONOR_NAME : 'donor_name',
-    DONOR_EMAIL : 'donor_email',
-    DONOR_PAN : 'donor_pancard',
-    AMOUNT : 'amount',
-    DESCRIPTION : 'description'
-};
 
 module.exports = {
     DONATION_TABLE_NAME,
