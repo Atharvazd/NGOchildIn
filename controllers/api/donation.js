@@ -1,21 +1,7 @@
 'use strict';
 
 var DonationModel = require('../models/DonationModel');
-const DONATION_FIELDS = {
-    ID : 'id',
-    CHILD_ID : 'child_id',
-    PURPOSE : 'purpose',
-    DATE : 'date_of_donation',
-    DONOR_GENDER : 'donor_gender',
-    DONOR_DOB : 'donor_date_of_birth',
-    DONOR_ADDRESS : 'donor_address',
-    DONOR_PROFESSION : 'donor_profession',
-    DONOR_NAME : 'donor_name',
-    DONOR_EMAIL : 'donor_email',
-    DONOR_PAN : 'donor_pancard',
-    AMOUNT : 'amount',
-    DESCRIPTION : 'description'
-};
+var DONATION_FIELDS = require('../../config/constants/constants').DONATION_FIELDS;
 function getAllDonations(req, res) {
     var model = DonationModel.getAllDonations(function(err, model){
       if(!err)
@@ -62,7 +48,7 @@ function getDonationsByDonorId(req, res) {
             });
         }
         function getDonationsInTimeRangeByChildId(req, res) {
-              var model = DonationModel.getDonationsInTimeRangeByChildId(req.params.DONATION_FIELDS.CHILD_ID,req.body.startTime, req.body.endTime,function(err, model){
+              var model = DonationModel.getDonationsInTimeRangeByChildId(req.params[DONATION_FIELDS.CHILD_ID],req.body.startTime, req.body.endTime,function(err, model){
                 if(!err)
                   res.json(model);
                 else {

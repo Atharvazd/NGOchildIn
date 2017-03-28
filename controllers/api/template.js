@@ -1,13 +1,7 @@
 'use strict';
 
 var TemplateModel = require('../models/TemplateModel');
-const TEMPLATE_FIELDS = {
-    ID: 'id',
-    NAME: 'template_name',
-    SUBJECT: 'subject',
-    DESCRIPTION: 'description',
-    TIME_CREATED: 'time_created'
-};
+var TEMPLATE_FIELDS = require('../../config/constants/constants').TEMPLATE_FIELDS;
 
 function getAllTemplates(req, res){
   TemplateModel.getAllTemplates(function(err, model){
@@ -19,7 +13,7 @@ function getAllTemplates(req, res){
   });
 }
 function getTemplateById(req, res) {
-    TemplateModel.getTemplateById(req.params.TEMPLATE_FIELDS.ID, function(err, model){
+    TemplateModel.getTemplateById(req.params[TEMPLATE_FIELDS.ID], function(err, model){
       if(!err)
         res.json(model);
       else {
@@ -28,7 +22,7 @@ function getTemplateById(req, res) {
     });
 }
 function updateTemplate(req, res){
-    TemplateModel.updateTemplate(req.body.TEMPLATE_FIELDS.ID, req.body, function(err, model){
+    TemplateModel.updateTemplate(req.body[TEMPLATE_FIELDS.ID], req.body, function(err, model){
       if(!err){
         res.status(200);
         res.send({SUCCESS: true, message: 'template updated successfully'});
@@ -39,7 +33,7 @@ function updateTemplate(req, res){
     });
   }
   function deleteTemplateById(req, res){
-    TemplateModel.deleteTemplateById(req.body.TEMPLATE_FIELDS.ID, function(err, model){
+    TemplateModel.deleteTemplateById(req.body[TEMPLATE_FIELDS.ID], function(err, model){
       if(!err){
         res.status(200);
         res.send({SUCCESS: true, message: 'template deleted successfully'});
@@ -51,7 +45,7 @@ function updateTemplate(req, res){
   }
 
 function insertTemplate(req, res){
-  TemplateModel.insertTemplate(req.body.TEMPLATE_FIELDS.NAME, req.body.TEMPLATE_FIELDS.SUBJECT, req.body.TEMPLATE_FIELDS.DESCRIPTION, function(err, model){
+  TemplateModel.insertTemplate(req.body[TEMPLATE_FIELDS.NAME], req.body[TEMPLATE_FIELDS.SUBJECT], req.body[TEMPLATE_FIELDS.DESCRIPTION], function(err, model){
     if(!err){
       res.status(200);
       res.send({SUCCESS: true, TemplateId: model.insertId, message: 'template insterted successfully'});

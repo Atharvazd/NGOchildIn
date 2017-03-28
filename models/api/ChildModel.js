@@ -3,14 +3,7 @@ const DBConnector = require('../../lib/dbconnector');
 const helper = require('../../lib/helper');
 
 const CHILD_TABLE_NAME = 'Child';
-const CHILD_FIELDS = {
-    ID: 'child_id',
-    NAME: 'name',
-    DOB: 'date_of_birth',
-    ADDITIONAL_INFO: 'additional_info',
-    SUPPORTED_DONOR: 'supported_donor',
-    TIME_CREATED: 'time_created'
-};
+var CHILD_FIELDS = require('../../config/constants/constants').CHILD_FIELDS;
 
 module.exports = {
     CHILD_TABLE_NAME,
@@ -27,7 +20,7 @@ module.exports = {
         DBConnector.query("DELETE FROM " + CHILD_TABLE_NAME + " WHERE " + CHILD_FIELDS.ID + " = " + child_id, callback);
     },
 
-    insertChild: function(name, dob, additional_info, supported_donor){
+    insertChild: function(name, dob, additional_info, supported_donor, callback){
         const time_created = helper.getCurrentMySQLDate();
         DBConnector.query("INSERT INTO " + CHILD_TABLE_NAME + " (" + CHILD_FIELDS.NAME + ", " + CHILD_FIELDS.DOB + ", "
          + CHILD_FIELDS.ADDITIONAL_INFO + ", " + CHILD_FIELDS.SUPPORTED_DONOR + ", " + CHILD_FIELDS.TIME_CREATED + ") VALUES ('"

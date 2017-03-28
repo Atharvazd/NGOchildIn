@@ -3,18 +3,7 @@ const DBConnector = require('../../lib/dbconnector');
 const helper = require('../../lib/helper');
 
 const DONOR_TABLE_NAME = 'Donor';
-const DONOR_FIELDS = {
-    ID: 'donor_id',
-    NAME: 'name',
-    CONTACT: 'contact',
-    EMAIL: 'email',
-    OCCASSION: 'occasion'
-    OCCASSION_DATE: 'occasion_date'
-    ADDITIONAL_INFO: 'additional_info'
-    SUPPORTED_CHILD: 'supported_child'
-    PASSWORD: 'password', //hashed
-    TIME_CREATED: 'time_created'
-};
+var DONOR_FIELDS = require('../../config/constants/constants').DONOR_FIELDS;
 
 module.exports = {
     DONOR_TABLE_NAME,

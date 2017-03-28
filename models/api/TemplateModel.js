@@ -3,13 +3,7 @@ const DBConnector = require('../../lib/dbconnector');
 const helper = require('../../lib/helper');
 
 const TEMPLATE_TABLE_NAME = 'Template';
-const TEMPLATE_FIELDS = {
-    ID: 'id',
-    NAME: 'template_name',
-    SUBJECT: 'subject',
-    DESCRIPTION: 'description',
-    TIME_CREATED: 'time_created'
-};
+var TEMPLATE_FIELDS = require('../../config/constants/constants').TEMPLATE_FIELDS;
 
 module.exports = {
     TEMPLATE_TABLE_NAME,
