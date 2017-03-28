@@ -1,6 +1,6 @@
 'use strict';
 
-var LoginModel = require('../models/LoginModel');
+var LoginModel = require('../../models/api/LoginModel');
 var DONOR_FIELDS = require('../../config/constants/constants').DONOR_FIELDS;
 
 function isValidLogin(req, res) {
@@ -17,5 +17,5 @@ function isValidLogin(req, res) {
 }
 
 module.exports = function (router) {
-  router.post('/', isValidLogin);
+  router.post('/', isValidLogin)
 };

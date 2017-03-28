@@ -1,3 +1,5 @@
+'use strict';
+
 const DONATION_FIELDS = {
     ID : 'id',
     CHILD_ID : 'child_id',
@@ -28,10 +30,10 @@ const DONOR_FIELDS = {
     NAME: 'name',
     CONTACT: 'contact',
     EMAIL: 'email',
-    OCCASSION: 'occasion'
-    OCCASSION_DATE: 'occasion_date'
-    ADDITIONAL_INFO: 'additional_info'
-    SUPPORTED_CHILD: 'supported_child'
+    OCCASSION: 'occasion',
+    OCCASSION_DATE: 'occasion_date',
+    ADDITIONAL_INFO: 'additional_info',
+    SUPPORTED_CHILD: 'supported_child',
     PASSWORD: 'password', //hashed
     TIME_CREATED: 'time_created'
 };
@@ -49,4 +51,4 @@ module.exports = {
   CHILD_FIELDS,
   DONATION_FIELDS,
   TEMPLATE_FIELDS
-}
+};

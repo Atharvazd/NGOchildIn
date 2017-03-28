@@ -1,6 +1,6 @@
 'use strict';
 
-var TemplateModel = require('../models/TemplateModel');
+var TemplateModel = require('../../models/api/TemplateModel');
 var TEMPLATE_FIELDS = require('../../config/constants/constants').TEMPLATE_FIELDS;
 
 function getAllTemplates(req, res){
@@ -57,10 +57,10 @@ function insertTemplate(req, res){
 }
 
 module.exports = function (router) {
-  router.get('/', getAllTemplates);
-  router.get('/:id', getTemplateById);
-  router.get('/', insertTemplate);
-  router.post('/update', updateTemplate);
-  router.post('/delete', deleteTemplateById);
+  router.get('/', getAllTemplates),
+  router.get('/:id', getTemplateById),
+  router.get('/', insertTemplate),
+  router.post('/update', updateTemplate),
+  router.post('/delete', deleteTemplateById)
 
 };

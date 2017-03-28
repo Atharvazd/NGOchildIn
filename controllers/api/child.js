@@ -1,6 +1,6 @@
 'use strict';
 
-var ChildModel = require('../../models/ChildModel');
+var ChildModel = require('../../models/api/ChildModel');
 var CHILD_FIELDS = require('../../config/constants/constants').CHILD_FIELDS;
 
 function getChildById(req, res) {
@@ -57,9 +57,9 @@ function getChildById(req, res) {
 
 
 module.exports = function (router) {
-  router.get('/:id',getChildById);
-  router.get('/', getAllChildren);
-  router.post('/', insertChild);
-  router.post('/update', updateChild);
-  router.post('/delete', deleteChildById);
+  router.get('/:id',getChildById),
+  router.get('/', getAllChildren),
+  router.post('/', insertChild),
+  router.post('/update', updateChild),
+  router.post('/delete', deleteChildById)
 };
