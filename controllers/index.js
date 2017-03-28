@@ -1,11 +1,11 @@
 'use strict';
 
-var IndexModel = require('../models/index');
+const IndexModel = require('../models/index');
 
 
 module.exports = function (router) {
 
-  var model = new IndexModel();
+  let model = new IndexModel();
 
   router.get('/', function (req, res) {
     res.render('index', model);

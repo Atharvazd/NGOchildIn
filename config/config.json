@@ -1,14 +1,14 @@
 {
 
-    
+
     "express": {
         "view cache": false,
         "view engine": "js",
         "views": "path:./.build/templates"
     },
-    
 
-    
+
+
     "view engines": {
         "js": {
             "module": "engine-munger",
@@ -26,16 +26,16 @@
             }
         }
     },
-    
 
-    
+
+
 
     "specialization": {
     },
 
     "middleware": {
 
-        
+
 
         "static": {
             "module": {
@@ -46,6 +46,15 @@
         "router": {
             "module": {
                 "arguments": [{ "directory": "path:./controllers" }]
+            }
+        },
+
+        "app-errors": {
+            "enabled": true,
+            "priority": 301,
+            "module": {
+                "name": "path:./lib/middleware/erroneous",
+                "method": "internalError"
             }
         }
 
