@@ -57,9 +57,9 @@ function getChildById(req, res) {
 
 
 module.exports = function (router) {
-  router.get('/:id',getChildById),
-  router.get('/', getAllChildren),
-  router.post('/', insertChild),
-  router.post('/update', updateChild),
-  router.post('/delete', deleteChildById)
+  router.get('/:id',getChildById);
+  router.get('/', getAllChildren);
+  router.post('/', insertChild);
+  router.post('/update', updateChild);
+  router.post('/delete', deleteChildById);
 };
