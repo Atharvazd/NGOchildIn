@@ -17,5 +17,5 @@ function isValidLogin(req, res) {
 }
 
 module.exports = function (router) {
-  router.post('/', isValidLogin)
+  router.post('/', isValidLogin);
 };

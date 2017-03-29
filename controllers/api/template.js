@@ -57,10 +57,10 @@ function insertTemplate(req, res){
 }
 
 module.exports = function (router) {
-  router.get('/', getAllTemplates),
-  router.get('/:id', getTemplateById),
-  router.get('/', insertTemplate),
-  router.post('/update', updateTemplate),
-  router.post('/delete', deleteTemplateById)
+  router.get('/', getAllTemplates);
+  router.get('/:id', getTemplateById);
+  router.get('/', insertTemplate);
+  router.post('/update', updateTemplate);
+  router.post('/delete', deleteTemplateById);
 
 };

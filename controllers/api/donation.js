@@ -83,14 +83,14 @@ function getDonationsByDonorId(req, res) {
       }
 
 module.exports = function (router) {
-  router.get('/', getAllDonations),
-  router.get('/donor/:id', getDonationsByDonorId),
-  router.get('/child/:id', getDonationsByChildId),
-  router.get('/:id', getDonationsById),
-  router.get('/time/', getDonationsInTimeRange),
-  router.get('/time/:donor_id', getDonationsInTimeRangeByDonorId),
-  router.get('/time/:child_id', getDonationsInTimeRangeByChildId),
-  router.post('/', insertDonation),
-  router.post('/update', updateDonation)
+  router.get('/', getAllDonations);
+  router.get('/donor/:id', getDonationsByDonorId);
+  router.get('/child/:id', getDonationsByChildId);
+  router.get('/:id', getDonationsById);
+  router.get('/time/', getDonationsInTimeRange);
+  router.get('/time/:donor_id', getDonationsInTimeRangeByDonorId);
+  router.get('/time/:child_id', getDonationsInTimeRangeByChildId);
+  router.post('/', insertDonation);
+  router.post('/update', updateDonation);
 
 };
