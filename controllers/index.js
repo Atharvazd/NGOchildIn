@@ -136,6 +136,147 @@ module.exports = function(router) {
         });
     });
 
+    router.get('/donation', function(req, res) {
+        DonationModel.getAllDonations((err, rows) => {
+            console.log(rows);
+            var donationData = rows.map((donation) => {
+                return {
+                    id: donation.id,
+                    child_id: donation.child_id,
+                    contact: donation.purpose,
+                    email: donation.date_of_donation,
+                    occasion: donation.donor_gender,
+                    occasion_date: donation.donor_address,
+                    additional_info: donation.donor_profession,
+                    additional_info: donation.donor_name,
+                    additional_info: donation.donor_email,
+                    additional_info: donation.donor_pancard,
+                    additional_info: donation.mobile,
+                    additional_info: donation.amount,
+                    additional_info: donation.description,
+                }
+            });
+            var model = {
+                url: 'donation',
+                donor: donationData
+            }
+            res.render('index', model);
+        });
+    });
+
+    router.get('/donation/donor/:donor_id', function(req, res) {
+        DonationModel.getDonationsByDonorId(donor_id, (err, rows) => {
+            console.log(rows);
+            var donationData = rows.map((donation) => {
+                return {
+                    id: donation.id,
+                    child_id: donation.child_id,
+                    contact: donation.purpose,
+                    email: donation.date_of_donation,
+                    occasion: donation.donor_gender,
+                    occasion_date: donation.donor_address,
+                    additional_info: donation.donor_profession,
+                    additional_info: donation.donor_name,
+                    additional_info: donation.donor_email,
+                    additional_info: donation.donor_pancard,
+                    additional_info: donation.mobile,
+                    additional_info: donation.amount,
+                    additional_info: donation.description,
+                }
+            });
+            var model = {
+                url: 'donationByDonorId',
+                donor: donationData
+            }
+            res.render('index', model);
+        });
+    });
+
+    router.get('/donation/child/:child_id', function(req, res) {
+        DonationModel.getDonationsByChildId(child_id, (err, rows) => {
+            console.log(rows);
+            var donationData = rows.map((donation) => {
+                return {
+                    id: donation.id,
+                    child_id: donation.child_id,
+                    contact: donation.purpose,
+                    email: donation.date_of_donation,
+                    occasion: donation.donor_gender,
+                    occasion_date: donation.donor_address,
+                    additional_info: donation.donor_profession,
+                    additional_info: donation.donor_name,
+                    additional_info: donation.donor_email,
+                    additional_info: donation.donor_pancard,
+                    additional_info: donation.mobile,
+                    additional_info: donation.amount,
+                    additional_info: donation.description,
+                }
+            });
+            var model = {
+                url: 'donationByChildId',
+                donor: donationData
+            }
+            res.render('index', model);
+        });
+    });
+
+    router.get('/donation', function(req, res) {
+      console.log('hello donation');
+        DonationModel.getAllDonations((err, rows) => {
+            console.log(rows);
+            var donationData = rows.map((donation) => {
+                return {
+                    id: donation.id,
+                    child_id: donation.child_id,
+                    purpose: donation.purpose,
+                    dob: donation.date_of_donation,
+                    gender: donation.donor_gender,
+                    address: donation.donor_address,
+                    profession: donation.donor_profession,
+                    name: donation.donor_name,
+                    email: donation.donor_email,
+                    pan: donation.donor_pancard,
+                    contact: donation.mobile,
+                    amount: donation.amount,
+                    description: donation.description,
+                }
+            });
+            var model = {
+                url: 'donationByDonationId',
+                donor: donationData
+            }
+            res.render('index', model);
+        });
+    });
+
+    router.get('/donation/:donation_id', function(req, res) {
+        DonationModel.getDonationsByDonorId(donation_id, (err, rows) => {
+            console.log(rows);
+            var donationData = rows.map((donation) => {
+                return {
+                    id: donation.id,
+                    supported_child: donation.child_id,
+                    contact: donation.purpose,
+                    email: donation.date_of_donation,
+                    occasion: donation.donor_gender,
+                    occasion_date: donation.donor_address,
+                    additional_info: donation.donor_profession,
+                    additional_info: donation.donor_name,
+                    additional_info: donation.donor_email,
+                    additional_info: donation.donor_pancard,
+                    additional_info: donation.mobile,
+                    additional_info: donation.amount,
+                    additional_info: donation.description,
+                }
+            });
+            var model = {
+                url: 'donationByDonationId',
+                donor: donationData
+            }
+            res.render('index', model);
+        });
+    });
+
     router.post('/messagesDonor', function(req, res) {
         console.log('messagesDonor', req.body);
         res.json({}).end()

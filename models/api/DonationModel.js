@@ -3,7 +3,7 @@ const DBConnector = require('../../lib/dbconnector');
 const helper = require('../../lib/helper');
 const DonorModel = require('./DonorModel');
 
-const DONATION_TABLE_NAME = 'Donor';
+const DONATION_TABLE_NAME = 'donation';
 
 var DONATION_FIELDS = require('../../config/constants/constants').DONATION_FIELDS;
 /*
@@ -67,7 +67,7 @@ module.exports = {
         });
     },
 
-    insertDonation: function(child_id, purpose, donor_gender, donor_dob, donor_address, donor_profession, donor_name, donor_email, donor_pan, amount, description, callback) {
+    insertDonation: function(child_id, purpose, donor_gender, donor_dob, donor_address, donor_profession, donor_name, donor_email, donor_pan, mobile, amount, description, callback) {
         const time_created = helper.getCurrentMySQLDate();
         DBConnector.query("INSERT INTO " + DONATION_TABLE_NAME + " (" + DONATION_FIELDS.CHILD_ID + ", " + DONATION_FIELDS.PURPOSE + ", " +
             DONATION_FIELDS.DATE + ", " + DONATION_FIELDS.DONOR_GENDER + ", " + DONATION_FIELDS.DONOR_DOB +
