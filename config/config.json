@@ -14,8 +14,9 @@
             "module": "engine-munger",
             "renderer": {
                 "method": "js",
-                "arguments": [
-                    { "cache": true },
+                "arguments": [{
+                        "cache": true
+                    },
                     {
                         "views": "config:express.views",
                         "view engine": "config:express.view engine",
@@ -30,8 +31,7 @@
 
 
 
-    "specialization": {
-    },
+    "specialization": {},
 
     "middleware": {
 
@@ -39,13 +39,15 @@
 
         "static": {
             "module": {
-                "arguments": [ "path:./.build" ]
+                "arguments": ["path:./.build"]
             }
         },
 
         "router": {
             "module": {
-                "arguments": [{ "directory": "path:./controllers" }]
+                "arguments": [{
+                    "directory": "path:./controllers"
+                }]
             }
         },
 
