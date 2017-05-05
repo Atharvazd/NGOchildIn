@@ -12,8 +12,9 @@
             "module": "engine-munger",
             "renderer": {
                 "method": "dust",
-                "arguments": [
-                    { "cache": false },
+                "arguments": [{
+                        "cache": false
+                    },
                     {
                         "views": "config:express.views",
                         "view engine": "config:express.view engine",
@@ -60,14 +61,12 @@
             "priority": 110,
             "module": {
                 "name": "lusca",
-                "arguments": [
-                    {
-                        "csrf": true,
-                        "xframe": "SAMEORIGIN",
-                        "p3p": false,
-                        "csp": false
-                    }
-                ]
+                "arguments": [{
+                    "csrf": true,
+                    "xframe": "SAMEORIGIN",
+                    "p3p": false,
+                    "csp": false
+                }]
             }
         }
     }
