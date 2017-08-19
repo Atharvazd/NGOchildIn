@@ -29,7 +29,7 @@
               <table id="donorsList" class="table table-hover">
                 <thead>
                   <tr>
-                    <th><input type="checkbox" id="checkall" /></th>
+                    {! <th><input type="checkbox" id="checkall" /></th> !}
                     <th style="display:none;">Id</th>
                     <th>Name</th>
                     <th>Contact No.</th>
@@ -42,7 +42,7 @@
                 <tbody id="donorList" class="donor-list">
                     {#donor}
                       <tr>
-                        <td class="donorCheckbox"><input type="checkbox" class="checkthis" /></td>
+                        {! <td class="donorCheckbox"><input type="checkbox" class="checkthis" /></td> !}
                         <td class="donor_id" style="display:none;">{donor_id}</td>
                         <td class="name">{name}</td>
                         <td class="contact">{contact}</td>
@@ -215,7 +215,7 @@
                 <table id="childList" class="table table-hover">
                   <thead>
                     <tr>
-                      <th><input type="checkbox" id="checkall" /></th>
+                      {! <th><input type="checkbox" id="checkall" /></th> !}
                       <th style="display:none;">Id</th>
                       <th>Name</th>
                       <th>DOB</th>
@@ -227,7 +227,7 @@
                   <tbody id="childList" class="child-list">
                       {#child}
                         <tr>
-                          <td class="childCheckbox"><input type="checkbox" class="checkthis" /></td>
+                          {! <td class="childCheckbox"><input type="checkbox" class="checkthis" /></td> !}
                           <td class="child_id" style="display:none;">{child_id}</td>
                           <td class="name">{name}</td>
                           <td class="DOB">{dob}</td>
@@ -390,7 +390,7 @@
                 <table id="donationList" class="table table-hover">
                   <thead>
                     <tr>
-                      <th><input type="checkbox" id="checkall" /></th>
+                      {! <th><input type="checkbox" id="checkall" /></th> !}
                       <th style="display:none;">Id</th>
                       <th>Supported Child</th>
                       <th>purpose</th>
@@ -411,7 +411,7 @@
                   <tbody id="donorList" class="donor-list">
                       {#donation}
                         <tr>
-                          <td class="donorCheckbox"><input type="checkbox" class="checkthis" /></td>
+                          {! <td class="donorCheckbox"><input type="checkbox" class="checkthis" /></td> !}
                           <td class="donation_id" style="display:none;">{donation_id}</td>
                           <td class="supported_child">{supported_child}</td>
                           <td class="purpose">{purpose}</td>
