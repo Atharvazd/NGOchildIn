@@ -7,12 +7,16 @@
         {>"layouts/sidebar" /}
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           {@eq key=url value="dashboard"}
-            <h1 class="page-header">Dashboard </h1>
+          <div class="row">
+            <div class="col-md-8">
+              <h3 class="page-header">ChildIn Donor Manangement</h3>
+            </div>
+          </div>
           {/eq}
           {@eq key=url value="donors"}
           <div class="row">
             <div class="col-md-8">
-              <h3 class="page-header">Donors</h3>
+              <h3 class="page-header">Donors List</h3>
             </div>
             <div class="col-md-2">
               <button type="button" class="btn btn-info btn-md" id="registerDonor">Register New Donor</button>
@@ -198,7 +202,7 @@
           {@eq key=url value="child"}
             <div class="row">
               <div class="col-md-8">
-                <h3 class="page-header">Child</h3>
+                <h3 class="page-header">Child List</h3>
               </div>
               <div class="col-md-2">
                 <button type="button" class="btn btn-info btn-md" id="registerChild">Register New Child</button>
@@ -373,7 +377,7 @@
           {@eq key=url value="donation"}
             <div class="row">
               <div class="col-md-8">
-                <h3 class="page-header">Donation</h3>
+                <h3 class="page-header">Donations List</h3>
               </div>
               <div class="col-md-2">
                 <button type="button" class="btn btn-info btn-md" id="Donation">Add Donation</button>
