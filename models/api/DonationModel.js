@@ -23,9 +23,9 @@ module.exports = {
             rows.forEach(row => {
                 DBConnector.query("SELECT * FROM " + CHILD_TABLE_NAME + " WHERE " + CHILD_FIELDS.ID + " = " + row.child_id, (err, child_rows) => {
                     row.supported_child = child_rows[0][CHILD_FIELDS.NAME];
-                    return callback(null, rows);
                 });
             });
+            return callback(null, rows);
         });
     },
 
