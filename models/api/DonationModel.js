@@ -17,8 +17,8 @@ module.exports = {
     DONATION_FIELDS,
     getAllDonations: function(callback) {
         DBConnector.query("SELECT * FROM " + DONATION_TABLE_NAME, (err, rows) => {
-            if (err) {
-                return callback(err);
+            if (err || rows.length == 0) {
+                return callback(err, rows);
             }
             rows.forEach(row => {
                 DBConnector.query("SELECT * FROM " + CHILD_TABLE_NAME + " WHERE " + CHILD_FIELDS.ID + " = " + row.child_id, (err, child_rows) => {
@@ -118,5 +118,9 @@ module.exports = {
         });
         updateString = updateValsArr.join(',');
         DBConnector.query("UPDATE " + DONATION_TABLE_NAME + " SET " + updateValsArr + " WHERE " + DONATION_FIELDS.ID + " = " + donation_id, callback);
-    }
+    },
+
+    deleteDonationById: function(donation_id, callback) {
+        DBConnector.query("DELETE FROM " + DONATION_TABLE_NAME + " WHERE " + DONATION_FIELDS.ID + " = " + donation_id, callback);
+    },
 };

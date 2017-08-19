@@ -57,7 +57,7 @@ module.exports = function(router) {
         DonationModel.getAllDonations((err, rows) => {
             var donationData = rows.map((donation) => {
                 return {
-                    id: donation.id,
+                    donation_id: donation.id,
                     child_id: donation.child_id,
                     supported_child: donation.supported_child,
                     purpose: donation.purpose,
@@ -208,6 +208,7 @@ module.exports = function(router) {
     });
 
     router.post('/delete_donation', function(req, res) {
+        console.log('deleting donation')
         DonationModel.deleteDonationById(req.body.id, function(err, rows) {
             res.json({err, rows}).end();
         });
