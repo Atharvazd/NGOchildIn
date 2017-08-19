@@ -534,7 +534,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_name">Purpose</label>
                             <div class="col-md-8">
-                              <input id="form_purpose" name="purpose" type="text" placeholder="Enter your purpose" class="form-control input-md" required="" >
+                              <input id="form_purpose" name="purpose" type="text" placeholder="Enter your purpose" class="form-control input-md" maxlength="1000" >
 
                             </div>
                           </div>
@@ -561,7 +561,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_name">Address</label>
                             <div class="col-md-8">
-                              <input id="form_address" name="address" type="text" placeholder="Enter donor address" class="form-control input-md" required="" >
+                              <input id="form_address" name="address" type="text" placeholder="Enter donor address" class="form-control input-md" maxlength="300" >
 
                             </div>
                           </div>
@@ -570,7 +570,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_name">Profession</label>
                             <div class="col-md-8">
-                              <input id="form_profession" name="profession" type="text" placeholder="Enter donor profession" class="form-control input-md" required="" >
+                              <input id="form_profession" name="profession" type="text" placeholder="Enter donor profession" class="form-control input-md" maxlength="50">
 
                             </div>
                           </div>
@@ -579,7 +579,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_name">Donor Name</label>
                             <div class="col-md-8">
-                              <input id="form_name" name="name" type="text" placeholder="Enter donor name" class="form-control input-md" required="" >
+                              <input id="form_name" name="name" type="text" placeholder="Enter donor name" class="form-control input-md" required="" maxlength="50">
 
                             </div>
                           </div>
@@ -588,7 +588,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_email">Donor Email</label>
                             <div class="col-md-8">
-                              <input id="form_email" name="email" type="text" placeholder="Enter your email id" class="form-control input-md" >
+                              <input id="form_email" name="email" type="text" placeholder="Enter your email id" class="form-control input-md" maxlength="50">
 
                             </div>
                           </div>
@@ -597,7 +597,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_name">Donor PAN</label>
                             <div class="col-md-8">
-                              <input id="form_pan" name="pan" type="text" placeholder="Enter donor PAN No." class="form-control input-md">
+                              <input id="form_pan" name="pan" type="text" placeholder="Enter donor PAN No." class="form-control input-md" maxlength="30">
 
                             </div>
                           </div>
@@ -633,7 +633,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_additional_info">Additional Info</label>
                             <div class="col-md-8">
-                              <textarea id="form_additional_info" name="additional_info" placeholder="Enter info" class="form-control input-md" >
+                              <textarea id="form_additional_info" name="additional_info" placeholder="Enter info" class="form-control input-md" maxlength="1000">
                               </textarea>
                             </div>
                           </div>
