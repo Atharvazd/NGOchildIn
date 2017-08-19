@@ -57,7 +57,7 @@ module.exports = function(router) {
 
     router.get('/donation', function(req, res) {
         DonationModel.getAllDonations((err, rows) => {
-            ChildModel.getAllChildren((err, child_rows) =>{
+            ChildModel.getAllChildren((err, child_rows) => {
                 var childList = child_rows.map(child => {
                     return {
                         id: child.id,
@@ -84,6 +84,7 @@ module.exports = function(router) {
                         description: donation.description
                     }
                 });
+
                 var model = {
                     url: 'donation',
                     donation: donationData,
@@ -97,37 +98,37 @@ module.exports = function(router) {
 
     router.post('/registerDonor', function(req, res) {
         DonorModel.insertDonor(req.body.name, req.body.contact, req.body.email, req.body.additional_info, '', function(err, rows) {
-            res.json({err, rows}).end();
+            res.redirect('/donors');
         });
     });
 
     router.post('/registerChild', function(req, res) {
         ChildModel.insertChild(req.body.name, req.body.dob, '', req.body.additional_info, function(err, rows) {
-            res.json({err, rows}).end();
+            res.redirect('/child');
         });
     });
 
     router.post('/registerDonation', function(req, res) {
         DonationModel.insertDonation(Number(req.body.supported_child), req.body.purpose, req.body.donation_date, req.body.gender, req.body.dob, req.body.address, req.body.profession, req.body.name, req.body.email, req.body.pan, req.body.contact, Number(req.body.amount), req.body.additional_info, function(err, rows) {
-            res.json({err, rows}).end();
+            res.redirect('/donation');
         });
     });
 
     router.post('/delete_donor', function(req, res) {
         DonorModel.deleteDonorById(req.body.id, function(err, rows) {
-            res.json({err, rows}).end();
+            res.render('index', {url : 'donors'});
         });
     });
 
     router.post('/delete_child', function(req, res) {
         ChildModel.deleteChildById(req.body.id, function(err, rows) {
-            res.json({err, rows}).end();
+            res.render('index', {url : 'child'});
         });
     });
 
     router.post('/delete_donation', function(req, res) {
         DonationModel.deleteDonationById(req.body.id, function(err, rows) {
-            res.json({err, rows}).end();
+            res.render('index', {url : 'donation'});
         });
     });
 

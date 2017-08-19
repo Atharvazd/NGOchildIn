@@ -137,7 +137,6 @@
             var Id = event.target.getAttribute('data-user-id') || event.target.parentElement.getAttribute('data-user-id') ;
             var userType = event.target.getAttribute('data-user-type') || event.target.parentElement.getAttribute('data-user-type');
 
-            console.log('raaa', Id, userType);
             var url = '/delete_' + userType;
             $.ajax({
                 url: url,
@@ -147,11 +146,9 @@
                 type: "POST",
                 dataType: "json",
                 success: function(json) {
-                  console.log('successfull ajax. reload');
                   location.reload();
                 },
                 error: function() {
-                  console.log('error in ajax. reload');
                   location.reload();
                 }
             });
@@ -160,8 +157,7 @@
         $('#donorList').pageMe({
             pagerSelector: '#myPager',
             showPrevNext: true,
-            hidePageNumbers: false,
-            perPage: 3
+            hidePageNumbers: false
         });
 
         $("#donorsList #checkall").click(function() {
