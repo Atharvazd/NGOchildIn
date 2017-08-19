@@ -4,7 +4,6 @@ var LoginModel = require('../../models/api/LoginModel');
 var DONOR_FIELDS = require('../../config/constants/constants').DONOR_FIELDS;
 
 function isValidLogin(req, res) {
-    console.log(req.body);
     LoginModel.isValidLogin(req.body[DONOR_FIELDS.EMAIL], req.body[DONOR_FIELDS.PASSWORD], function(err, model) {
         if (!err) {
             res.status(200);

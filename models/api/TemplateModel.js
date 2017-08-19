@@ -2,7 +2,7 @@
 const DBConnector = require('../../lib/dbconnector');
 const helper = require('../../lib/helper');
 
-const TEMPLATE_TABLE_NAME = 'Template';
+const TEMPLATE_TABLE_NAME = 'template';
 var TEMPLATE_FIELDS = require('../../config/constants/constants').TEMPLATE_FIELDS;
 
 module.exports = {

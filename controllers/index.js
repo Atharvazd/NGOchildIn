@@ -1,7 +1,9 @@
 'use strict';
 
 const IndexModel = require('../models/index');
-
+const DonationModel = require('../models/api/DonationModel');
+const DonorModel = require('../models/api/DonorModel');
+const ChildModel = require('../models/api/ChildModel');
 
 module.exports = function(router) {
 
@@ -12,133 +14,46 @@ module.exports = function(router) {
     });
 
     router.get('/donors', function(req, res) {
-        res.render('index', {
-            url: 'donors',
-            donor: [{
-                    donor_id: 11,
-                    name: 'xxxx',
-                    contact: 'xxxx',
-                    email: 'xxxx',
-                    occasion: 'Birthday',
-                    occasion_date: 'xxxx',
-                    additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    supported_child: 'xxxx'
-                },
-                {
-                    donor_id: 111,
-                    name: 'xxxx',
-                    contact: 'xxxx',
-                    email: 'xxxx',
-                    occasion: 'NIL',
-                    occasion_date: 'xxxx',
-                    additional_info: 'xxxx',
-                    supported_child: 'xxxx'
-                },
-                {
-                    donor_id: 112,
-                    name: 'xxxx',
-                    contact: 'xxxx',
-                    email: 'xxxx',
-                    occasion: 'Wedding Anniversary',
-                    occasion_date: 'xxxx',
-                    additional_info: 'xxxx',
-                    supported_child: 'xxxx'
-                },
-                {
-                    donor_id: 121,
-                    name: 'xxxx',
-                    contact: 'xxxx',
-                    email: 'xxxx',
-                    occasion: 'Birthday',
-                    occasion_date: 'xxxx',
-                    additional_info: 'xxxx',
-                    supported_child: 'xxxx'
-                },
-                {
-                    name: 'xxxx',
-                    contact: 'xxxx',
-                    email: 'xxxx',
-                    occasion: 'Birthday',
-                    occasion_date: 'xxxx',
-                    additional_info: 'xxxx',
-                    supported_child: 'xxxx'
-                },
-                {
-                    name: 'xxxx',
-                    contact: 'xxxx',
-                    email: 'xxxx',
-                    occasion: 'Birthday',
-                    occasion_date: 'xxxx',
-                    additional_info: 'xxxx',
-                    supported_child: 'xxxx'
-                },
-                {
-                    name: 'xxxx',
-                    contact: 'xxxx',
-                    email: 'xxxx',
-                    occasion: 'Birthday',
-                    occasion_date: 'xxxx',
-                    additional_info: 'xxxx',
-                    supported_child: 'xxxx'
-                },
-                {
-                    name: 'xxxx',
-                    contact: 'xxxx',
-                    email: 'xxxx',
-                    occasion: 'Birthday',
-                    occasion_date: 'xxxx',
-                    additional_info: 'xxxx',
-                    supported_child: 'xxxx'
-                }
-            ]
+        DonorModel.getAllDonors(function(err, rows) {
+            var donors = rows.map(row => {
+                return {
+                    donor_id: row.id,
+                    name: row.name,
+                    contact: row.mobile,
+                    email: row.email,
+                    occasion: '',
+                    occasion_date: '',
+                    additional_info: row.description,
+                    supported_child: ''
+                };
+            });
+            res.render('index', {
+                url: 'donors',
+                donor: donors
+            });
         });
     });
 
     router.get('/child', function(req, res) {
-        res.render('index', {
-            url: 'child',
-            child: [{
-                    child_id: 116,
-                    name: 'xxxx',
-                    dob: 'xxxx',
-                    additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    supporter_donor: 'xxxx'
-                },
-                {
-                    child_id: 117,
-                    name: 'xxxx',
-                    dob: 'xxxx',
-                    additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    supporter_donor: 'xxxx'
-                },
-                {
-                    child_id: 118,
-                    name: 'xxxx',
-                    dob: 'xxxx',
-                    additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    supporter_donor: 'xxxx'
-                },
-                {
-                    child_id: 119,
-                    name: 'xxxx',
-                    dob: 'xxxx',
-                    additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    supporter_donor: 'xxxx'
-                },
-                {
-                    child_id: 110,
-                    name: 'xxxx',
-                    dob: 'xxxx',
-                    additional_info: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    supporter_donor: 'xxxx'
-                }
-            ]
+        ChildModel.getAllChildren(function(err, rows) {
+            var children = rows.map(row => {
+                return {
+                    child_id: row.id,
+                    name: row.name,
+                    dob: row.date_of_birth,
+                    additional_info: row.description,
+                    supporter_donor: ''
+                };
+            });
+            res.render('index', {
+                url: 'child',
+                child: children
+            });
         });
     });
 
     router.get('/donation', function(req, res) {
         DonationModel.getAllDonations((err, rows) => {
-            console.log(rows);
             var donationData = rows.map((donation) => {
                 return {
                     id: donation.id,
@@ -166,7 +81,6 @@ module.exports = function(router) {
 
     router.get('/donation/donor/:donor_id', function(req, res) {
         DonationModel.getDonationsByDonorId(donor_id, (err, rows) => {
-            console.log(rows);
             var donationData = rows.map((donation) => {
                 return {
                     id: donation.id,
@@ -194,7 +108,6 @@ module.exports = function(router) {
 
     router.get('/donation/child/:child_id', function(req, res) {
         DonationModel.getDonationsByChildId(child_id, (err, rows) => {
-            console.log(rows);
             var donationData = rows.map((donation) => {
                 return {
                     id: donation.id,
@@ -221,9 +134,7 @@ module.exports = function(router) {
     });
 
     router.get('/donation', function(req, res) {
-      console.log('hello donation');
         DonationModel.getAllDonations((err, rows) => {
-            console.log(rows);
             var donationData = rows.map((donation) => {
                 return {
                     id: donation.id,
@@ -251,7 +162,6 @@ module.exports = function(router) {
 
     router.get('/donation/:donation_id', function(req, res) {
         DonationModel.getDonationsByDonorId(donation_id, (err, rows) => {
-            console.log(rows);
             var donationData = rows.map((donation) => {
                 return {
                     id: donation.id,
@@ -278,26 +188,29 @@ module.exports = function(router) {
     });
 
     router.post('/messagesDonor', function(req, res) {
-        console.log('messagesDonor', req.body);
         res.json({}).end()
         //res.render('index', {url : 'messages'});
     });
 
     router.post('/registerDonor', function(req, res) {
-        console.log('registerDonor', req.body);
-        res.json({}).end()
-        //res.render('index', {url : 'messages'});
+        DonorModel.insertDonor(req.body.name, req.body.contact, req.body.email, req.body.additional_info, '', function(err, rows) {
+            res.json({err, rows}).end();
+        });
+    });
+
+    router.post('/registerChild', function(req, res) {
+        ChildModel.insertChild(req.body.name, req.body.dob, '', req.body.additional_info, function(err, rows) {
+            res.json({err, rows}).end();
+        });
     });
 
     router.post('/updateDonor', function(req, res) {
-        console.log('updateDonor', req.body);
-        res.json({}).end()
+        res.json({}).end();
         //res.render('index', {url : 'messages'});
     });
 
     router.post('/deleteDonor', function(req, res) {
-        console.log('deleteDonor', req.body);
-        res.json({}).end()
+        res.json({}).end();
         //res.render('index', {url : 'messages'});
     });
 

@@ -106,6 +106,14 @@
             $("#registerDonorForm").modal();
         });
 
+        $("#registerChild").click(function() {
+            $("#registerChildForm").modal();
+        });
+
+        $("#Donation").click(function() {
+            $("#DonationForm").modal();
+        });
+
         $(".editButton").click(function(event) {
             $("#registerDonorForm").modal();
             var donorInfo = event.target.parentElement.parentElement.childNodes;
@@ -124,7 +132,6 @@
                     donorId = element.innerHTML;
                 }
             });
-            console.log('donorId : ' + donorId);
 
             donorId && $("#deleteDonor").attr("data-donor-id", donorId);
         });
