@@ -4,6 +4,8 @@ const IndexModel = require('../models/index');
 const DonationModel = require('../models/api/DonationModel');
 const DonorModel = require('../models/api/DonorModel');
 const ChildModel = require('../models/api/ChildModel');
+const CHILDIN_ADMIN_USER = 'child_in';
+const CHILDIN_ADMIN_PASSWORD = 'child_in';
 
 function isoDateToMMDDYYYY(isoDate) {
     var date = new Date(isoDate);
@@ -115,21 +117,37 @@ module.exports = function(router) {
         DonorModel.deleteDonorById(req.body.id, function(err, rows) {
             res.json({err, rows}).end();
         });
-        //res.render('index', {url : 'messages'});
     });
 
     router.post('/delete_child', function(req, res) {
         ChildModel.deleteChildById(req.body.id, function(err, rows) {
             res.json({err, rows}).end();
         });
-        //res.render('index', {url : 'messages'});
     });
 
     router.post('/delete_donation', function(req, res) {
         DonationModel.deleteDonationById(req.body.id, function(err, rows) {
             res.json({err, rows}).end();
         });
-        //res.render('index', {url : 'messages'});
+    });
+
+    router.get('/login', function(req, res) {
+        res.render('login');
+    });
+
+    router.post('/login', function(req, res) {
+        if(req.body.username === CHILDIN_ADMIN_USER && req.body.password === CHILDIN_ADMIN_PASSWORD || req.session.user) {
+          req.session.user = req.body.username;
+          res.redirect('/');
+        } else {
+          res.redirect('/login');
+        }
+
+    });
+
+    router.get('/logout', function(req, res) {
+        req.session.user = null;
+        res.redirect('/login');
     });
 
     // All items below this are PostMVP
@@ -224,8 +242,6 @@ module.exports = function(router) {
     //     res.json({}).end()
     //     //res.render('index', {url : 'messages'});
     // });
-    //
-    // router.get('/login', function(req, res) {
-    //     res.render('login');
-    // });
+
+
 };

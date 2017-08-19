@@ -1,6 +1,4 @@
 {
-
-
     "express": {
         "view cache": false,
         "view engine": "js",
@@ -44,10 +42,21 @@
         },
 
         "router": {
+
             "module": {
                 "arguments": [{
                     "directory": "path:./controllers"
                 }]
+            }
+        },
+
+        "isAuthenticated": {
+            "enabled": true,
+            "priority": 111,
+            "route": "/",
+            "module": {
+                "name":"path:./lib/auth",
+                "method": "isAuthenticated"
             }
         },
 
