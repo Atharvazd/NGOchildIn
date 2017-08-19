@@ -48,14 +48,14 @@
                         <td class="contact">{contact}</td>
                         <td class="email">{email}</td>
                         <td class="additional_info">{additional_info}</td>
-                        {! <td class="editButton" data-user-type="donor">
+                        {! <td class="editButton" data-user-type="donor" data-user-id={donor_id}>
                           <button class="btn btn-primary btn-xs">
                             <span class="glyphicon glyphicon-pencil"></span>
                           </button>
                         </td> !}
-                        <td class="deleteButton" data-user-type="donor">
-                          <button class="btn btn-danger btn-xs">
-                            <span class="glyphicon glyphicon-trash"></span>
+                        <td class="deleteButton" data-user-type="donor" data-user-id={donor_id}>
+                          <button class="btn btn-danger btn-xs" data-user-type="donor" data-user-id={donor_id}>
+                            <span class="glyphicon glyphicon-trash"data-user-type="donor" data-user-id={donor_id}></span>
                           </button>
                         </td>
                       </tr>
@@ -232,14 +232,14 @@
                           <td class="name">{name}</td>
                           <td class="DOB">{dob}</td>
                           <td class="additional_info">{additional_info}</td>
-                          {! <td class="editButton" data-user-type="child">
+                          {! <td class="editButton" data-user-type="child" data-user-id={child_id} >
                             <button class="btn btn-primary btn-xs">
                               <span class="glyphicon glyphicon-pencil"></span>
                             </button>
                           </td> !}
-                          <td class="deleteButton" data-user-type="child">
-                            <button class="btn btn-danger btn-xs">
-                              <span class="glyphicon glyphicon-trash"></span>
+                          <td class="deleteButton" data-user-type="child" data-user-id={child_id}>
+                            <button class="btn btn-danger btn-xs" data-user-type="child" data-user-id={child_id}>
+                              <span class="glyphicon glyphicon-trash" data-user-type="child" data-user-id={child_id}></span>
                             </button>
                           </td>
                         </tr>
@@ -426,14 +426,14 @@
                           <td class="amount">{amount}</td>
                           <td class="donation_date">{donation_date}</td>
                           <td class="description">{description}</td>
-                          {! <td class="editButton" data-user-type="donation">
+                          {! <td class="editButton" data-user-type="donation" data-user-id={donation_id}>
                             <button class="btn btn-primary btn-xs">
                               <span class="glyphicon glyphicon-pencil"></span>
                             </button>
                           </td> !}
-                          <td class="deleteButton" data-user-type="donation">
-                            <button class="btn btn-danger btn-xs">
-                              <span class="glyphicon glyphicon-trash"></span>
+                          <td class="deleteButton" data-user-type="donation" data-user-id={donation_id}>
+                            <button class="btn btn-danger btn-xs" data-user-type="donation" data-user-id={donation_id}>
+                              <span class="glyphicon glyphicon-trash" data-user-type="donation" data-user-id={donation_id}></span>
                             </button>
                           </td>
                         </tr>

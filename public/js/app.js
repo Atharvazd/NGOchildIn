@@ -125,17 +125,17 @@
         $(".deleteButton").click(function(event) {
             $("#delete").modal();
 
-            var userType = $(".deleteButton").attr('data-user-type');
-            var findId = $('.' + userType + '_id').text();
+            var Id = event.target.getAttribute('data-user-id') || event.target.parentElement.getAttribute('data-user-id') ;
+            var userType = event.target.getAttribute('data-user-type') || event.target.parentElement.getAttribute('data-user-type');
 
-            findId && $("#deleteMe").attr("data-user-id", findId);
-            findId && $("#deleteMe").attr("data-user-type", userType);
+            Id && $("#deleteMe").attr("data-user-id", Id);
+            Id && $("#deleteMe").attr("data-user-type", userType);
 
         });
 
         $("#deleteMe").click(function(event) {
-            var Id = $("#deleteMe").closest("[data-user-id]").attr('data-user-id');
-            var userType = $("#deleteMe").closest("[data-user-id]").attr('data-user-type');
+            var Id = event.target.getAttribute('data-user-id') || event.target.parentElement.getAttribute('data-user-id') ;
+            var userType = event.target.getAttribute('data-user-type') || event.target.parentElement.getAttribute('data-user-type');
 
             console.log('raaa', Id, userType);
             var url = '/delete_' + userType;
