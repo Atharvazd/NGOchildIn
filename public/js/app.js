@@ -114,26 +114,47 @@
             $("#DonationForm").modal();
         });
 
-        $(".editButton").click(function(event) {
-            $("#registerDonorForm").modal();
-            var donorInfo = event.target.parentElement.parentElement.childNodes;
-            donorInfo.forEach(function(element, index) {
-                element.className && $('#form_' + element.className) && $('#form_' + element.className).val(element.innerHTML);
-            });
-        });
+        // $(".editButton").click(function(event) {
+        //     $("#registerDonorForm").modal();
+        //     var donorInfo = event.target.parentElement.parentElement.childNodes;
+        //     donorInfo.forEach(function(element, index) {
+        //         element.className && $('#form_' + element.className) && $('#form_' + element.className).val(element.innerHTML);
+        //     });
+        // });
 
         $(".deleteButton").click(function(event) {
             $("#delete").modal();
 
-            var donorId;
-            var findDonorId = event.target.parentElement.parentElement.childNodes;
-            findDonorId.forEach(function(element) {
-                if (element.className && element.className === 'donor_id' && element.innerHTML) {
-                    donorId = element.innerHTML;
+            var userType = $(".deleteButton").attr('data-user-type');
+            var findId = $('.' + userType + '_id').text();
+
+            findId && $("#deleteMe").attr("data-user-id", findId);
+            findId && $("#deleteMe").attr("data-user-type", userType);
+
+        });
+
+        $("#deleteMe").click(function(event) {
+            var Id = $("#deleteMe").closest("[data-user-id]").attr('data-user-id');
+            var userType = $("#deleteMe").closest("[data-user-id]").attr('data-user-type');
+
+            console.log('raaa', Id, userType);
+            var url = '/delete_' + userType;
+            $.ajax({
+                url: url,
+                data: {
+                    id: Id
+                },
+                type: "POST",
+                dataType: "json",
+                success: function(json) {
+                  console.log('successfull ajax. reload');
+                  location.reload();
+                },
+                error: function() {
+                  console.log('error in ajax. reload');
+                  location.reload();
                 }
             });
-
-            donorId && $("#deleteDonor").attr("data-donor-id", donorId);
         });
 
         $('#donorList').pageMe({
@@ -154,19 +175,6 @@
                     $(this).prop("checked", false);
                 });
             }
-        });
-
-        $("#deleteDonor").click(function(event) {
-            var donorId = event.target.getAttribute("data-donor-id");
-            $.ajax({
-                url: '/deleteDonor',
-                data: {
-                    donor_id: donorId
-                },
-                type: "POST",
-                dataType: "json",
-                success: function(json) {}
-            });
         });
 
         $('form#FormMessage').on('submit', function(e) {

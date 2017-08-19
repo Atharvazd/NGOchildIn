@@ -35,7 +35,7 @@
                     <th>Contact No.</th>
                     <th>Email</th>
                     <th>Additional Info</th>
-                    <th>Edit</th>
+                    {! <th>Edit</th> !}
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -48,12 +48,12 @@
                         <td class="contact">{contact}</td>
                         <td class="email">{email}</td>
                         <td class="additional_info">{additional_info}</td>
-                        <td class="editButton">
+                        {! <td class="editButton" data-user-type="donor">
                           <button class="btn btn-primary btn-xs">
                             <span class="glyphicon glyphicon-pencil"></span>
                           </button>
-                        </td>
-                        <td class="deleteButton">
+                        </td> !}
+                        <td class="deleteButton" data-user-type="donor">
                           <button class="btn btn-danger btn-xs">
                             <span class="glyphicon glyphicon-trash"></span>
                           </button>
@@ -118,7 +118,7 @@
 
                 </div>
                 <div class="modal-footer ">
-                  <button type="button" class="btn btn-success" id="deleteDonor" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                  <button type="button" class="btn btn-success" id="deleteMe" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                 </div>
               </div>
@@ -220,7 +220,7 @@
                       <th>Name</th>
                       <th>DOB</th>
                       <th>Additional Info</th>
-                      <th>Edit</th>
+                      {! <th>Edit</th> !}
                       <th>Delete</th>
                     </tr>
                   </thead>
@@ -232,12 +232,12 @@
                           <td class="name">{name}</td>
                           <td class="DOB">{dob}</td>
                           <td class="additional_info">{additional_info}</td>
-                          <td class="editButton">
+                          {! <td class="editButton" data-user-type="child">
                             <button class="btn btn-primary btn-xs">
                               <span class="glyphicon glyphicon-pencil"></span>
                             </button>
-                          </td>
-                          <td class="deleteButton">
+                          </td> !}
+                          <td class="deleteButton" data-user-type="child">
                             <button class="btn btn-danger btn-xs">
                               <span class="glyphicon glyphicon-trash"></span>
                             </button>
@@ -302,7 +302,7 @@
 
                   </div>
                   <div class="modal-footer ">
-                    <button type="button" class="btn btn-success" id="deleteChild" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                    <button type="button" class="btn btn-success" id="deleteMe" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                   </div>
                 </div>
@@ -339,7 +339,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_dob">DOB</label>
                             <div class="col-md-8">
-                              <input id="form_dob" name="dob" type="text" placeholder="Enter date" class="form-control input-md" >
+                              <input id="form_dob" name="dob" type="date" placeholder="Enter date" class="form-control input-md" >
 
                             </div>
                           </div>
@@ -402,8 +402,9 @@
                       <th>Email</th>
                       <th>PAN</th>
                       <th>Amount</th>
+                      <th>Donation Date</th>
                       <th>description</th>
-                      <th>Edit</th>
+                      {! <th>Edit</th> !}
                       <th>Delete</th>
                     </tr>
                   </thead>
@@ -411,7 +412,7 @@
                       {#donation}
                         <tr>
                           <td class="donorCheckbox"><input type="checkbox" class="checkthis" /></td>
-                          <td class="donor_id" style="display:none;">{donor_id}</td>
+                          <td class="donation_id" style="display:none;">{donation_id}</td>
                           <td class="supported_child">{supported_child}</td>
                           <td class="purpose">{purpose}</td>
                           <td class="gender">{gender}</td>
@@ -423,13 +424,14 @@
                           <td class="pan">{pan}</td>
                           <td class="mobile">{mobile}</td>
                           <td class="amount">{amount}</td>
+                          <td class="amount">{donation_date}</td>
                           <td class="description">{description}</td>
-                          <td class="editButton">
+                          {! <td class="editButton" data-user-type="donation">
                             <button class="btn btn-primary btn-xs">
                               <span class="glyphicon glyphicon-pencil"></span>
                             </button>
-                          </td>
-                          <td class="deleteButton">
+                          </td> !}
+                          <td class="deleteButton" data-user-type="donation">
                             <button class="btn btn-danger btn-xs">
                               <span class="glyphicon glyphicon-trash"></span>
                             </button>
@@ -494,7 +496,7 @@
 
                   </div>
                   <div class="modal-footer ">
-                    <button type="button" class="btn btn-success" id="deleteDonor" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                    <button type="button" class="btn btn-success" id="deleteMe" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                   </div>
                 </div>
@@ -549,7 +551,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_dob">DOB</label>
                             <div class="col-md-8">
-                              <input id="form_dob" name="dob" type="text" placeholder="Enter DOB" class="form-control input-md" >
+                              <input id="form_dob" name="dob" type="date" placeholder="Enter DOB" class="form-control input-md" >
 
                             </div>
                           </div>
@@ -613,6 +615,15 @@
                             <label class="col-md-4 control-label" for="form_name">Amount </label>
                             <div class="col-md-8">
                               <input id="form_amount" name="amount" type="text" placeholder="Enter donation amount" class="form-control input-md" required="" >
+
+                            </div>
+                          </div>
+
+                          <!-- Text input-->
+                          <div class="form-group">
+                            <label class="col-md-4 control-label" for="form_name">Date of donation</label>
+                            <div class="col-md-8">
+                              <input id="form_donation_date" name="donation_date" type="date" placeholder="Enter donation date" class="form-control input-md">
 
                             </div>
                           </div>
