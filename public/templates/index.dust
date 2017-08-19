@@ -328,7 +328,7 @@
 
                           <!-- Text input-->
                           <div class="form-group">
-                            <label class="col-md-4 control-label" for="form_name">Name</label>
+                            <label class="col-md-4 control-label" for="form_name">Child Name</label>
                             <div class="col-md-8">
                               <input id="form_name" name="name" type="text" placeholder="Enter your name" class="form-control input-md" required="" >
 
@@ -337,16 +337,16 @@
 
                           <!-- Text input-->
                           <div class="form-group">
-                            <label class="col-md-4 control-label" for="form_dob">DOB</label>
+                            <label class="col-md-4 control-label" for="form_dob">Child DOB</label>
                             <div class="col-md-8">
-                              <input id="form_dob" name="dob" type="date" placeholder="Enter date" class="form-control input-md" >
+                              <input id="form_dob" name="dob" type="date" placeholder="Enter Child DOB (mm/dd/yyyy)" class="form-control input-md" >
 
                             </div>
                           </div>
 
                           <!-- Text input-->
                           <div class="form-group">
-                            <label class="col-md-4 control-label" for="form_additional_info">Additional Info</label>
+                            <label class="col-md-4 control-label" for="form_additional_info">Additional info about child</label>
                             <div class="col-md-8">
                               <textarea id="form_additional_info" name="additional_info" placeholder="Enter info" class="form-control input-md" >
                               </textarea>
@@ -551,7 +551,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_dob">DOB</label>
                             <div class="col-md-8">
-                              <input id="form_dob" name="dob" type="date" placeholder="Enter DOB" class="form-control input-md" >
+                              <input id="form_dob" name="dob" type="date" placeholder="Enter donor DOB (mm/dd/yyyy)" class="form-control input-md" >
 
                             </div>
                           </div>
@@ -585,7 +585,7 @@
 
                           <!-- Text input-->
                           <div class="form-group">
-                            <label class="col-md-4 control-label" for="form_email">Email</label>
+                            <label class="col-md-4 control-label" for="form_email">Donor Email</label>
                             <div class="col-md-8">
                               <input id="form_email" name="email" type="text" placeholder="Enter your email id" class="form-control input-md" >
 
@@ -594,16 +594,16 @@
 
                           <!-- Text input-->
                           <div class="form-group">
-                            <label class="col-md-4 control-label" for="form_name">PAN</label>
+                            <label class="col-md-4 control-label" for="form_name">Donor PAN</label>
                             <div class="col-md-8">
-                              <input id="form_pan" name="pan" type="text" placeholder="Enter donor PAN No." class="form-control input-md" required="" >
+                              <input id="form_pan" name="pan" type="text" placeholder="Enter donor PAN No." class="form-control input-md">
 
                             </div>
                           </div>
 
                           <!-- Text input-->
                           <div class="form-group">
-                            <label class="col-md-4 control-label" for="form_name">Contact</label>
+                            <label class="col-md-4 control-label" for="form_name">Donor Contact</label>
                             <div class="col-md-8">
                               <input id="form_contact" name="contact" type="text" placeholder="Enter donor Contact details" class="form-control input-md" required="" >
 
@@ -612,7 +612,7 @@
 
                           <!-- Text input-->
                           <div class="form-group">
-                            <label class="col-md-4 control-label" for="form_name">Amount </label>
+                            <label class="col-md-4 control-label" for="form_name">Amount</label>
                             <div class="col-md-8">
                               <input id="form_amount" name="amount" type="text" placeholder="Enter donation amount" class="form-control input-md" required="" >
 
@@ -623,7 +623,7 @@
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="form_name">Date of donation</label>
                             <div class="col-md-8">
-                              <input id="form_donation_date" name="donation_date" type="date" placeholder="Enter donation date" class="form-control input-md">
+                              <input id="form_donation_date" name="donation_date" type="date" placeholder="Enter donation date (mm/dd/yyyy)" class="form-control input-md">
 
                             </div>
                           </div>
