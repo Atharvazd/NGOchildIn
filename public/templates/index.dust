@@ -523,10 +523,13 @@
 
                           <!-- Text input-->
                           <div class="form-group">
-                            <label class="col-md-4 control-label" for="form_name"> Supported Child</label>
+                            <label class="col-md-4 control-label" for="form_name">Supported Child</label>
                             <div class="col-md-8">
-                              <input id="form_supported_child" name="supported_child" type="text" placeholder="Enter Supported child" class="form-control input-md" required="" >
-
+                              <select id="form_supported_child" name="supported_child" class="form-control" required="">
+                                  {#childList}
+                                      <option value={id}>{name}</option>
+                                  {/childList}
+                              </select>
                             </div>
                           </div>
 
