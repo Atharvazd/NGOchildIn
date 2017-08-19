@@ -22,9 +22,9 @@
     "express": "^4.12.2",
     "kraken-js": "^2.0.0",
     "mysql": "^2.13.0",
-    "requirejs": "^2.3.3",
     "passport": "^0.2.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "requirejs": "^2.3.3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

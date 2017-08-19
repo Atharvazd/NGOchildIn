@@ -401,6 +401,7 @@
                       <th>Donor name</th>
                       <th>Email</th>
                       <th>PAN</th>
+                      <th>Contact</th>
                       <th>Amount</th>
                       <th>Donation Date</th>
                       <th>description</th>
@@ -517,7 +518,7 @@
                   </div>
                   <div class="modal-body">
                     <div class="row">
-                      <form class="form-horizontal">
+                      <form class="form-horizontal" action="/registerDonation" method="POST">
                         <fieldset>
 
                           <!-- Text input-->

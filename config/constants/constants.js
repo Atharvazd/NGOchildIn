@@ -12,6 +12,7 @@ const DONATION_FIELDS = {
     DONOR_NAME: 'donor_name',
     DONOR_EMAIL: 'donor_email',
     DONOR_PAN: 'donor_pancard',
+    DONOR_MOBILE: 'mobile',
     AMOUNT: 'amount',
     DESCRIPTION: 'description'
 };
