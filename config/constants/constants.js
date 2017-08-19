@@ -20,20 +20,23 @@ const CHILD_FIELDS = {
     ID: 'id',
     NAME: 'name',
     DOB: 'date_of_birth',
-    ADDITIONAL_INFO: 'additional_info',
-    SUPPORTED_DONOR: 'supported_donor',
+    // ADDITIONAL_INFO: 'additional_info',
+    // SUPPORTED_DONOR: 'supported_donor',
+    GENDER: 'gender',
+    DESCRIPTION: 'description',
     TIME_CREATED: 'time_created'
 };
 
 const DONOR_FIELDS = {
     ID: 'id',
     NAME: 'name',
-    CONTACT: 'contact',
+    CONTACT: 'mobile',
     EMAIL: 'email',
-    OCCASSION: 'occasion',
-    OCCASSION_DATE: 'occasion_date',
-    ADDITIONAL_INFO: 'additional_info',
-    SUPPORTED_CHILD: 'supported_child',
+    // OCCASSION: 'occasion',
+    // OCCASSION_DATE: 'occasion_date',
+    // ADDITIONAL_INFO: 'additional_info',
+    // SUPPORTED_CHILD: 'supported_child',
+    DESCRIPTION: 'description',
     PASSWORD: 'password', //hashed
     TIME_CREATED: 'time_created'
 };

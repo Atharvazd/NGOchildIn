@@ -2,7 +2,7 @@
 const DBConnector = require('../../lib/dbconnector');
 const helper = require('../../lib/helper');
 
-const DONOR_TABLE_NAME = 'Donor';
+const DONOR_TABLE_NAME = 'donor';
 var DONOR_FIELDS = require('../../config/constants/constants').DONOR_FIELDS;
 
 module.exports = {
@@ -20,13 +20,13 @@ module.exports = {
         DBConnector.query("DELETE FROM " + DONOR_TABLE_NAME + " WHERE " + DONOR_FIELDS.ID + " = " + donor_id, callback);
     },
 
-    insertDonor: function(name, contact, email, occasion, occasion_date, additional_info, supported_child, password, callback) {
+    insertDonor: function(name, contact, email, description, password, callback) {
         const time_created = helper.getCurrentMySQLDate();
-        DBConnector.query("INSERT INTO " + DONOR_TABLE_NAME + " (" + DONOR_FIELDS.NAME + ", " + DONOR_FIELDS.CONTACT + ", " +
-            DONOR_FIELDS.EMAIL + ", " + DONOR_FIELDS.OCCASION + ", " + DONOR_FIELDS.OCCASION_DATE + ", " + DONOR_FIELDS.ADDITIONAL_INFO + ", " +
-            DONOR_FIELDS.SUPPORTED_CHILD + ", " + DONOR_FIELDS.PASSWORD + ", " + DONOR_FIELDS.TIME_CREATED + ") VALUES ('" +
-            name + "', '" + contact + "', '" + email + "', '" + occasion + "', '" + occasion_date + "', '" + additional_info + "', '" +
-            supported_child + "', '" + password + "', '" + time_created + "')", callback);
+        var query = "INSERT INTO " + DONOR_TABLE_NAME + " (" + DONOR_FIELDS.NAME + ", " + DONOR_FIELDS.CONTACT + ", " +
+            DONOR_FIELDS.EMAIL + ", " + DONOR_FIELDS.DESCRIPTION + ", " + DONOR_FIELDS.PASSWORD + ", " + DONOR_FIELDS.TIME_CREATED + ") VALUES ('" +
+            name + "', '" + contact + "', '" + email + "', '" + description + "', '" + password + "', '" + time_created + "')";
+
+        DBConnector.query(query, callback);
     },
 
     getDonorEmailById: function(donor_id, callback) {

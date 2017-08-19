@@ -34,10 +34,7 @@
                     <th>Name</th>
                     <th>Contact No.</th>
                     <th>Email</th>
-                    <th>Occasion</th>
-                    <th>Occasion Date</th>
                     <th>Additional Info</th>
-                    <th>Supported Child</th>
                     <th>Edit</th>
                     <th>Delete</th>
                   </tr>
@@ -50,10 +47,7 @@
                         <td class="name">{name}</td>
                         <td class="contact">{contact}</td>
                         <td class="email">{email}</td>
-                        <td class="occasion">{occasion}</td>
-                        <td class="occasion_date">{occasion_date}</td>
                         <td class="additional_info">{additional_info}</td>
-                        <td class="supported_child">{supported_child}</td>
                         <td class="editButton">
                           <button class="btn btn-primary btn-xs">
                             <span class="glyphicon glyphicon-pencil"></span>
@@ -145,7 +139,7 @@
                 </div>
                 <div class="modal-body">
                   <div class="row">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="/registerDonor" method="post">
                       <fieldset>
 
                         <!-- Text input-->
@@ -175,44 +169,12 @@
                           </div>
                         </div>
 
-                        <!-- Select Basic -->
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="form_occasion">Occasion</label>
-                          <div class="col-md-8">
-                            <select id="form_occasion" name="occasion" class="form-control">
-                              <option value="NIL">Select</option>
-                              <option value="Birthday">Birthday</option>
-                              <option value="Wedding Anniversary">Wedding Anniversary</option>
-                              <option value="Memorial Day">Memorial Day</option>
-                              <option value="Others">Others</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="form_occasion_date">Occasion Date</label>
-                          <div class="col-md-8">
-                            <input id="form_occasion_date" name="occasion_date" type="text" placeholder="Enter date" class="form-control input-md" >
-
-                          </div>
-                        </div>
-
                         <!-- Text input-->
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="form_additional_info">Additional Info</label>
                           <div class="col-md-8">
                             <textarea id="form_additional_info" name="additional_info" placeholder="Enter info" class="form-control input-md" >
                             </textarea>
-                          </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="form_supported_child">Supported child</label>
-                          <div class="col-md-8">
-                            <input id="form_supported_child" name="supported_child" type="text" placeholder="Child you support" class="form-control input-md" >
-
                           </div>
                         </div>
 
@@ -239,7 +201,7 @@
                 <h3 class="page-header">Child</h3>
               </div>
               <div class="col-md-2">
-                <button type="button" class="btn btn-info btn-md" id="registerchild">Register New Child</button>
+                <button type="button" class="btn btn-info btn-md" id="registerChild">Register New Child</button>
               </div>
               <div class="col-md-2">
                 <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#ModalMessage">
@@ -256,10 +218,8 @@
                       <th><input type="checkbox" id="checkall" /></th>
                       <th style="display:none;">Id</th>
                       <th>Name</th>
-                      <th>Contact No.</th>
                       <th>DOB</th>
                       <th>Additional Info</th>
-                      <th>Supporting Donor</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
@@ -270,9 +230,8 @@
                           <td class="childCheckbox"><input type="checkbox" class="checkthis" /></td>
                           <td class="child_id" style="display:none;">{child_id}</td>
                           <td class="name">{name}</td>
-                          <td class="DOB">{occasion_date}</td>
+                          <td class="DOB">{dob}</td>
                           <td class="additional_info">{additional_info}</td>
-                          <td class="supported_child">{supported_donor}</td>
                           <td class="editButton">
                             <button class="btn btn-primary btn-xs">
                               <span class="glyphicon glyphicon-pencil"></span>
@@ -364,7 +323,7 @@
                   </div>
                   <div class="modal-body">
                     <div class="row">
-                      <form class="form-horizontal">
+                      <form class="form-horizontal" action="/registerChild" method="post">
                         <fieldset>
 
                           <!-- Text input-->
@@ -391,14 +350,6 @@
                             <div class="col-md-8">
                               <textarea id="form_additional_info" name="additional_info" placeholder="Enter info" class="form-control input-md" >
                               </textarea>
-                            </div>
-                          </div>
-
-                          <!-- Text input-->
-                          <div class="form-group">
-                            <label class="col-md-4 control-label" for="form_supported_donor">Supporting donor</label>
-                            <div class="col-md-8">
-                              <input id="form_supported_donor" name="supported_donor" type="text" placeholder="Supporting Donor" class="form-control input-md" >
                             </div>
                           </div>
 
@@ -569,7 +520,7 @@
 
                           <!-- Text input-->
                           <div class="form-group">
-                            <label class="col-md-4 control-label" for="form_name"> Supporrted Child</label>
+                            <label class="col-md-4 control-label" for="form_name"> Supported Child</label>
                             <div class="col-md-8">
                               <input id="form_supported_child" name="supported_child" type="text" placeholder="Enter Supported child" class="form-control input-md" required="" >
 

@@ -91,6 +91,7 @@ CREATE TABLE `donor` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `mobile` varchar(20) NOT NULL,
+  `description` varchar(1000) NOT NULL,
   `password` varchar(50) NOT NULL,
   `time_created` date NOT NULL,
   PRIMARY KEY (`id`)
