@@ -55,7 +55,7 @@ module.exports = function(router) {
 
     router.get('/donation', function(req, res) {
         DonationModel.getAllDonations((err, rows) => {
-            ChildModel.getAllChildren((err, child_rows) =>{
+            ChildModel.getAllChildren((err, child_rows) => {
                 var childList = child_rows.map(child => {
                     return {
                         id: child.id,
@@ -82,6 +82,7 @@ module.exports = function(router) {
                         description: donation.description
                     }
                 });
+
                 var model = {
                     url: 'donation',
                     donation: donationData,
