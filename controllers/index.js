@@ -5,6 +5,11 @@ const DonationModel = require('../models/api/DonationModel');
 const DonorModel = require('../models/api/DonorModel');
 const ChildModel = require('../models/api/ChildModel');
 
+function isoDateToMMDDYYYY(isoDate) {
+    var date = new Date(isoDate);
+    return (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
+}
+
 module.exports = function(router) {
 
     let model = new IndexModel();
@@ -21,10 +26,7 @@ module.exports = function(router) {
                     name: row.name,
                     contact: row.mobile,
                     email: row.email,
-                    occasion: '',
-                    occasion_date: '',
-                    additional_info: row.description,
-                    supported_child: ''
+                    additional_info: row.description
                 };
             });
             res.render('index', {
@@ -40,9 +42,8 @@ module.exports = function(router) {
                 return {
                     child_id: row.id,
                     name: row.name,
-                    dob: row.date_of_birth,
+                    dob: isoDateToMMDDYYYY(row.date_of_birth),
                     additional_info: row.description,
-                    supporter_donor: ''
                 };
             });
             res.render('index', {
@@ -58,23 +59,26 @@ module.exports = function(router) {
                 return {
                     id: donation.id,
                     child_id: donation.child_id,
-                    contact: donation.purpose,
-                    email: donation.date_of_donation,
-                    occasion: donation.donor_gender,
-                    occasion_date: donation.donor_address,
-                    additional_info: donation.donor_profession,
-                    additional_info: donation.donor_name,
-                    additional_info: donation.donor_email,
-                    additional_info: donation.donor_pancard,
-                    additional_info: donation.mobile,
-                    additional_info: donation.amount,
-                    additional_info: donation.description,
+                    supported_child: donation.supported_child,
+                    purpose: donation.purpose,
+                    donation_date: isoDateToMMDDYYYY(donation.date_of_donation),
+                    gender: donation.donor_gender,
+                    dob: isoDateToMMDDYYYY(donation.donor_date_of_birth),
+                    address: donation.donor_address,
+                    profession: donation.donor_profession,
+                    name: donation.donor_name,
+                    email: donation.donor_email,
+                    pan: donation.donor_pancard,
+                    mobile: donation.mobile,
+                    amount: donation.amount,
+                    description: donation.description
                 }
             });
             var model = {
                 url: 'donation',
-                donor: donationData
+                donation: donationData
             }
+
             res.render('index', model);
         });
     });
@@ -133,33 +137,6 @@ module.exports = function(router) {
         });
     });
 
-    router.get('/donation', function(req, res) {
-        DonationModel.getAllDonations((err, rows) => {
-            var donationData = rows.map((donation) => {
-                return {
-                    id: donation.id,
-                    child_id: donation.child_id,
-                    purpose: donation.purpose,
-                    dob: donation.date_of_donation,
-                    gender: donation.donor_gender,
-                    address: donation.donor_address,
-                    profession: donation.donor_profession,
-                    name: donation.donor_name,
-                    email: donation.donor_email,
-                    pan: donation.donor_pancard,
-                    contact: donation.mobile,
-                    amount: donation.amount,
-                    description: donation.description,
-                }
-            });
-            var model = {
-                url: 'donationByDonationId',
-                donor: donationData
-            }
-            res.render('index', model);
-        });
-    });
-
     router.get('/donation/:donation_id', function(req, res) {
         DonationModel.getDonationsByDonorId(donation_id, (err, rows) => {
             var donationData = rows.map((donation) => {
@@ -199,7 +176,14 @@ module.exports = function(router) {
     });
 
     router.post('/registerChild', function(req, res) {
+        console.log(req.body);
         ChildModel.insertChild(req.body.name, req.body.dob, '', req.body.additional_info, function(err, rows) {
+            res.json({err, rows}).end();
+        });
+    });
+
+    router.post('/registerDonation', function(req, res) {
+        DonationModel.insertDonation(Number(req.body.supported_child), req.body.purpose, req.body.gender, req.body.dob, req.body.address, req.body.profession, req.body.name, req.body.email, req.body.pan, req.body.contact, Number(req.body.amount), req.body.additional_info, function(err, rows) {
             res.json({err, rows}).end();
         });
     });
@@ -209,8 +193,24 @@ module.exports = function(router) {
         //res.render('index', {url : 'messages'});
     });
 
-    router.post('/deleteDonor', function(req, res) {
-        res.json({}).end();
+    router.post('/delete_donor', function(req, res) {
+        DonorModel.deleteDonorById(req.body.id, function(err, rows) {
+            res.json({err, rows}).end();
+        });
+        //res.render('index', {url : 'messages'});
+    });
+
+    router.post('/delete_child', function(req, res) {
+        ChildModel.deleteChildById(req.body.id, function(err, rows) {
+            res.json({err, rows}).end();
+        });
+        //res.render('index', {url : 'messages'});
+    });
+
+    router.post('/delete_donation', function(req, res) {
+        DonationModel.deleteDonationById(req.body.id, function(err, rows) {
+            res.json({err, rows}).end();
+        });
         //res.render('index', {url : 'messages'});
     });
 
