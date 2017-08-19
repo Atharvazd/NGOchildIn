@@ -424,7 +424,7 @@
                           <td class="pan">{pan}</td>
                           <td class="mobile">{mobile}</td>
                           <td class="amount">{amount}</td>
-                          <td class="amount">{donation_date}</td>
+                          <td class="donation_date">{donation_date}</td>
                           <td class="description">{description}</td>
                           {! <td class="editButton" data-user-type="donation">
                             <button class="btn btn-primary btn-xs">
