@@ -4,6 +4,8 @@ const IndexModel = require('../models/index');
 const DonationModel = require('../models/api/DonationModel');
 const DonorModel = require('../models/api/DonorModel');
 const ChildModel = require('../models/api/ChildModel');
+const emailservice = require('./email');
+
 const CHILDIN_ADMIN_USER = 'child_in';
 const CHILDIN_ADMIN_PASSWORD = 'child_in';
 
@@ -130,6 +132,27 @@ module.exports = function(router) {
         DonationModel.deleteDonationById(req.body.id, function(err, rows) {
             res.render('index', {url : 'donation'});
         });
+    });
+
+    router.post('/send_email', function(req, res) {
+      var receivers = req.body.email_id.trim().split(/\s*,\s*/);
+      var subject = req.body.subject;
+      var text = req.body.messages;
+
+      var mailOptions = {
+          to: receivers, // list of receivers
+          subject: subject, // Subject line
+          text: text // plaintext body
+      };
+
+      emailservice(mailOptions, function(err, result) {
+        if(err) {
+          console.log('Error' , err);
+        }
+        console.log('Success' , result);
+
+        res.redirect('/');
+      });
     });
 
     router.get('/login', function(req, res) {

@@ -173,29 +173,37 @@
             }
         });
 
-        $('form#FormMessage').on('submit', function(e) {
-            var donorsListCheckbox = document.querySelectorAll('.checkthis');
-            var donorIds = [];
-            donorsListCheckbox.forEach(function(element) {
-                if (element.checked) {
-                    var findDonorId = element.parentElement.parentElement.childNodes;
-                    findDonorId.forEach(function(element) {
-                        if (element.className && element.className === 'donor_id' && element.innerHTML) {
-                            donorIds.push(element.innerHTML);
-                        }
-                    });
-                }
-            });
-
-            var data_ajax = $(this).serialize() + "&donor_id=" + (donorIds.length > 0 ? JSON.stringify(donorIds) : '');
-            $.ajax({
-                url: '/messagesDonor',
-                data: data_ajax,
-                type: "POST",
-                dataType: "json",
-                success: function(json) {}
-            });
-        });
+        // $('form#DonorMessageForm').on('submit', function(e) {
+        //     // var donorsListCheckbox = document.querySelectorAll('.checkthis');
+        //     // var donorIds = [];
+        //     // donorsListCheckbox.forEach(function(element) {
+        //     //     if (element.checked) {
+        //     //         var findDonorId = element.parentElement.parentElement.childNodes;
+        //     //         findDonorId.forEach(function(element) {
+        //     //             if (element.className && element.className === 'donor_id' && element.innerHTML) {
+        //     //                 donorIds.push(element.innerHTML);
+        //     //             }
+        //     //         });
+        //     //     }
+        //     // });
+        //     //
+        //     var data_ajax = $(this).serialize();
+        //
+        //     $.ajax({
+        //         url: '/send_email',
+        //         data: data_ajax,
+        //         type: "POST",
+        //         dataType: "json",
+        //         success: function(json) {
+        //           console.log('email_sent');
+        //           location.reload();
+        //         },
+        //         error: function(err) {
+        //           console.log('error while sending email');
+        //           location.reload();
+        //         }
+        //     });
+        // });
     });
 
 })(this);

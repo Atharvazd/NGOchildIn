@@ -10,6 +10,50 @@
           <div class="row">
             <div class="col-md-8">
               <h3 class="page-header">ChildIn Donor Manangement</h3>
+              <div class="col-md-4">
+                <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#ModalMessage">
+                  <span class="glyphicon glyphicon-envelope"></span> Send Mail
+                </button>
+              </div>
+            </div>
+              <!-- Send Message/Mail Modal -->
+              <div class="modal fade" id="ModalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <form id="DonorMessageForm" class="form-horizontal" method="POST" action="/send_email">
+                    <div class="modal-content">
+                      <div class="modal-header btn-primary">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h4 class="text-center"  id="myModalLabel">Send Mail to Donor</h4>
+                      </div>
+                      <div class="modal-body">
+                        <br />
+                        <!-- input Subject -->
+                        <div class="control-group">
+                          <label for="email_id">Email ID</label>
+                          <input name="email_id" type="text" class="form-control">
+                        </div>
+                        <div class="control-group">
+                          <label for="subject">Subject</label>
+                          <input name="subject" type="text" class="form-control">
+                        </div>
+                        <br />
+                        <!-- TextArea Message -->
+                        <div class="control-group">
+                          <label for="messages">Message</label>
+                          <textarea id="messages" name="messages" class="form-control" rows="5"></textarea>
+                        </div>
+                        <br />
+                      </div>
+                      <div class="modal-footer">
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-send"></span>Send</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
             </div>
           </div>
           {/eq}
@@ -18,13 +62,8 @@
             <div class="col-md-8">
               <h3 class="page-header">Donors List</h3>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
               <button type="button" class="btn btn-info btn-md" id="registerDonor">Register New Donor</button>
-            </div>
-            <div class="col-md-2">
-              <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#ModalMessage">
-                <span class="glyphicon glyphicon-envelope"></span> Message
-              </button>
             </div>
           </div>
 
@@ -73,40 +112,6 @@
           </div>
 
           <!-- Modal content-->
-
-          <!-- Message Modal -->
-          <div class="modal fade" id="ModalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <form id="FormMessage" class="form-horizontal">
-                <div class="modal-content">
-                  <div class="modal-header btn-primary">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h4 class="text-center"  id="myModalLabel">Message</h4>
-                  </div>
-                  <div class="modal-body">
-                    <br />
-                    <!-- input Subject -->
-                    <div class="control-group">
-                      <label for="subject">Subject</label>
-                      <input name="subject" type="text" class="form-control">
-                    </div>
-                    <br />
-                    <!-- TextArea Message -->
-                    <div class="control-group">
-                      <label for="messages">Message</label>
-                      <textarea id="messages" name="messages" class="form-control" rows="5"></textarea>
-                    </div>
-                    <br />
-                  </div>
-                  <div class="modal-footer">
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-send"></span>Send</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
 
           <!-- Delete-->
           <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -204,13 +209,8 @@
               <div class="col-md-8">
                 <h3 class="page-header">Child List</h3>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-4">
                 <button type="button" class="btn btn-info btn-md" id="registerChild">Register New Child</button>
-              </div>
-              <div class="col-md-2">
-                <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#ModalMessage">
-                  <span class="glyphicon glyphicon-envelope"></span> Message
-                </button>
               </div>
             </div>
 
@@ -257,40 +257,6 @@
             </div>
 
             <!-- Modal content-->
-
-            <!-- Message Modal -->
-            <div class="modal fade" id="ModalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <form id="FormMessage" class="form-horizontal">
-                  <div class="modal-content">
-                    <div class="modal-header btn-primary">
-                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                      <h4 class="text-center"  id="myModalLabel">Message</h4>
-                    </div>
-                    <div class="modal-body">
-                      <br />
-                      <!-- input Subject -->
-                      <div class="control-group">
-                        <label for="subject">Subject</label>
-                        <input name="subject" type="text" class="form-control">
-                      </div>
-                      <br />
-                      <!-- TextArea Message -->
-                      <div class="control-group">
-                        <label for="messages">Message</label>
-                        <textarea id="messages" name="messages" class="form-control" rows="5"></textarea>
-                      </div>
-                      <br />
-                    </div>
-                    <div class="modal-footer">
-                      <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-send"></span>Send</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
 
             <!-- Delete-->
             <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -379,13 +345,8 @@
               <div class="col-md-8">
                 <h3 class="page-header">Donations List</h3>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-4">
                 <button type="button" class="btn btn-info btn-md" id="Donation">Add Donation</button>
-              </div>
-              <div class="col-md-2">
-                <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#ModalMessage">
-                  <span class="glyphicon glyphicon-envelope"></span> Message
-                </button>
               </div>
             </div>
 
@@ -452,40 +413,6 @@
             </div>
 
             <!-- Modal content-->
-
-            <!-- Message Modal -->
-            <div class="modal fade" id="ModalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <form id="FormMessage" class="form-horizontal">
-                  <div class="modal-content">
-                    <div class="modal-header btn-primary">
-                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                      <h4 class="text-center"  id="myModalLabel">Message</h4>
-                    </div>
-                    <div class="modal-body">
-                      <br />
-                      <!-- input Subject -->
-                      <div class="control-group">
-                        <label for="subject">Subject</label>
-                        <input name="subject" type="text" class="form-control">
-                      </div>
-                      <br />
-                      <!-- TextArea Message -->
-                      <div class="control-group">
-                        <label for="messages">Message</label>
-                        <textarea id="messages" name="messages" class="form-control" rows="5"></textarea>
-                      </div>
-                      <br />
-                    </div>
-                    <div class="modal-footer">
-                      <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-send"></span>Send</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
 
             <!-- Delete-->
             <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
